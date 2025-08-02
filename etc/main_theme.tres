@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://yoehfgx3aqs4"]
+
+[ext_resource type="FontFile" uid="uid://cqvcrn742q1ag" path="res://Files/OpenDyslexic3-Regular.ttf" id="1_1unkv"]
+[ext_resource type="StyleBox" uid="uid://bmt0fo3ks5mxw" path="res://etc/main_style_box_flat.tres" id="2_h6rux"]
+
+[resource]
+Button/font_sizes/font_size = 36
+Button/fonts/font = ExtResource("1_1unkv")
+Button/styles/disabled = ExtResource("2_h6rux")
+Label/font_sizes/font_size = 36
+Label/fonts/font = ExtResource("1_1unkv")
