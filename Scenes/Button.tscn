@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cldfncglilpnt"]
+
+[ext_resource type="Texture2D" uid="uid://dl6gb5v0og4b" path="res://Videos/ButtonNorm.svg" id="1_km4uo"]
+[ext_resource type="Texture2D" uid="uid://cchtjhieky2tn" path="res://Videos/ButtonPress.svg" id="2_hbhiu"]
+[ext_resource type="Script" uid="uid://d3q0bjnyo6ul6" path="res://Scripts/OmnisButton.gd" id="3_8bxxr"]
+
+[node name="Button" type="TextureButton"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -203.5
+offset_top = -100.0
+offset_right = 203.5
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(203.5, 330)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("1_km4uo")
+texture_pressed = ExtResource("2_hbhiu")
+script = ExtResource("3_8bxxr")

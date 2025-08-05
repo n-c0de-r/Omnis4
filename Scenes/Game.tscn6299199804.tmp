@@ -1,10 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1irmmbnqwggj"]
+[gd_scene load_steps=3 format=3 uid="uid://d1irmmbnqwggj"]
 
-[ext_resource type="Script" uid="uid://dexpfg7vjhx6p" path="res://Scripts/OmnisGame.gd" id="1_j5yw3"]
 [ext_resource type="Texture2D" uid="uid://ds2kdeoocjwr4" path="res://Videos/Background.png" id="1_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://bmoirptkgr7q0" path="res://Scenes/Board.tscn" id="2_gl6un"]
 
-[node name="Game" type="Control" node_paths=PackedStringArray("board")]
+[node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -16,8 +15,6 @@ grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 size_flags_horizontal = 4
 size_flags_vertical = 4
-script = ExtResource("1_j5yw3")
-board = NodePath("Board")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1

@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmoirptkgr7q0"]
+
+[ext_resource type="PackedScene" uid="uid://cldfncglilpnt" path="res://Scenes/Button.tscn" id="1_mpxtb"]
+[ext_resource type="Script" uid="uid://dqn4bscbg6b02" path="res://Scripts/OmnisBoard.gd" id="1_pc0oo"]
+[ext_resource type="Texture2D" uid="uid://4ru2oc03ea6s" path="res://Videos/CenterNorm.svg" id="2_jrn86"]
+[ext_resource type="Texture2D" uid="uid://wj3nfl3tska8" path="res://Videos/CenterPress.svg" id="2_mpxtb"]
+
+[node name="Board" type="Control" node_paths=PackedStringArray("buttons_ring", "buttons", "mid")]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_pc0oo")
+buttons_ring = NodePath("ButtonsRing")
+buttons = [NodePath("ButtonsRing/BLUE"), NodePath("ButtonsRing/RED"), NodePath("ButtonsRing/YELLOW"), NodePath("ButtonsRing/GREEN")]
+mid = NodePath("MIDDLE")
+
+[node name="ButtonsRing" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BLUE" parent="ButtonsRing" instance=ExtResource("1_mpxtb")]
+self_modulate = Color(0, 0, 1, 1)
+layout_mode = 1
+offset_top = -330.0
+offset_bottom = -130.0
+
+[node name="RED" parent="ButtonsRing" instance=ExtResource("1_mpxtb")]
+self_modulate = Color(1, 0, 0, 1)
+layout_mode = 1
+offset_top = -330.0
+offset_bottom = -130.0
+rotation = 1.5708
+
+[node name="YELLOW" parent="ButtonsRing" instance=ExtResource("1_mpxtb")]
+self_modulate = Color(1, 1, 0, 1)
+layout_mode = 1
+offset_top = -330.0
+offset_bottom = -130.0
+rotation = 3.14159
+
+[node name="GREEN" parent="ButtonsRing" instance=ExtResource("1_mpxtb")]
+self_modulate = Color(0, 1, 0, 1)
+layout_mode = 1
+offset_top = -330.0
+offset_bottom = -130.0
+rotation = 4.71239
+
+[node name="MIDDLE" parent="." instance=ExtResource("1_mpxtb")]
+self_modulate = Color(0.8, 0, 0.8, 1)
+layout_mode = 1
+offset_left = -123.0
+offset_top = -123.0
+offset_right = 123.0
+offset_bottom = 123.0
+pivot_offset = Vector2(0, 0)
+texture_normal = ExtResource("2_jrn86")
+texture_pressed = ExtResource("2_mpxtb")
