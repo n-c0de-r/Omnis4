@@ -28,18 +28,17 @@ var is_rotating: bool = false
 
 #region Built-Ins
 func _ready() -> void:
-	board.toggle_ring(false)
+	board.disable_ring(true)
 	if (Globals.mode == Globals.Modes.REVERSE):
-		check_start -= check_direction
-		check_direction = 0-check_direction
+		_flip_direction()
 	
 	is_flipped = Globals.mode == Globals.Modes.FLIP
 	is_random = Globals.mode == Globals.Modes.RANDOM
 	
-	double_counter = (Globals.trial & (1 << Globals.Trials.DOUBLE)) >> 1
-	mirror_shift = (Globals.trial & (1 << Globals.Trials.MIRROR)) >> 1
-	is_spiral = !!(Globals.trial & (1 << Globals.Trials.SPIRAL))
-	is_rotating = !!(Globals.trial & (1 << Globals.Trials.ROTATE))
+	double_counter = Globals.get_trial_bit(Globals.Trials.DOUBLE)
+	mirror_shift = Globals.get_trial_bit(Globals.Trials.MIRROR)
+	is_spiral = Globals.is_trial_set(Globals.Trials.SPIRAL)
+	is_rotating = Globals.is_trial_set(Globals.Trials.ROTATE)
 	Globals.connect_signals(board, _evaluate)
 	_setButtons()
 #endregion Built-Ins
@@ -47,9 +46,11 @@ func _ready() -> void:
 #region Private Funtions
 ## Sets options for the buttons
 func _setButtons() -> void:
-	for btn: OmnisButton in board.buttons_ring.get_children():
+	button_list = board.color_buttons.slice(0, BUTTON_COUNT-1)
+	for btn: OmnisButton in board.color_buttons:
 		btn._simulatePress(0.5, effect)
-		button_list.append(btn)
+		btn.toggle_mode = false
+		
 		await get_tree().create_timer(0.25).timeout
 	
 	_generate_rounds(rounds_played)
@@ -82,7 +83,7 @@ func _play_list()-> void:
 	if (is_rotating):
 		board.rotate()
 	
-	board.toggle_ring(true)
+	board.disable_ring(false)
 	
 func _evaluate(pressed: OmnisButton) -> void:
 	if (guess_list[check_index] == pressed):
@@ -95,15 +96,14 @@ func _evaluate(pressed: OmnisButton) -> void:
 
 func _finish_round() -> void:
 	if (check_index >= guess_list.size() or check_index < -guess_list.size()):
-		board.toggle_ring(false)
+		board.disable_ring(true)
 		
 		# round over
 		rounds_played += 1
 		
 		# Switch directions
 		if (is_flipped):
-			check_start -= check_direction
-			check_direction = 0-check_direction
+			_flip_direction()
 		
 		# Add progressively more to the next round
 		if (is_spiral):
@@ -117,4 +117,8 @@ func _finish_round() -> void:
 			_generate_rounds(spiral_counter)
 			
 		check_index = check_start
+
+func _flip_direction() -> void:
+	check_start -= check_direction
+	check_direction = 0-check_direction
 #endregion Private Funtions

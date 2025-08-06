@@ -35,3 +35,4 @@ texture = ExtResource("2_5wwxk")
 
 [node name="Board" parent="." instance=ExtResource("3_lqu4r")]
 layout_mode = 1
+text_strings = Array[String](["Up", "Right", "Down", "Left", "Pause"])

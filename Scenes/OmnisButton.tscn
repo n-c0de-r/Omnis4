@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dl6gb5v0og4b" path="res://Videos/ButtonNorm.svg" id="1_wau3o"]
 [ext_resource type="Texture2D" uid="uid://cchtjhieky2tn" path="res://Videos/ButtonPress.svg" id="2_rtlau"]
 [ext_resource type="Script" uid="uid://d3q0bjnyo6ul6" path="res://Scripts/OmnisButton.gd" id="3_o5fwo"]
-[ext_resource type="BitMap" uid="uid://c657swcpwelq7" path="res://Videos/omnisMask.svg" id="3_rtlau"]
+[ext_resource type="BitMap" uid="uid://c657swcpwelq7" path="res://Videos/ButtonMask.svg" id="3_rtlau"]
 
 [node name="Button" type="TextureButton"]
 anchors_preset = 8

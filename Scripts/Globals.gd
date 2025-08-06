@@ -14,7 +14,7 @@ enum Symbols { CLEAR, ARROWS, SHAPES, ANIMALS }
 
 #region Values
 var mode: int = Modes.NORMAL
-var trial: int = 0
+var trial: int = 1<<Trials.ROTATE
 var cue: int = Cues.COLOR
 var sound: int = Sounds.ORIGINAL
 var symbol: int = Symbols.CLEAR
@@ -23,9 +23,20 @@ var symbol: int = Symbols.CLEAR
 #region Public Functions
 ## Connects a selected board's child buttons to it's current parent object
 func connect_signals(board: OmnisBoard, execute: Callable) -> void:
-	for btn: OmnisButton in board.buttons_ring.get_children():
-		btn.omnis_button.connect(execute)
-	board.mid.omnis_button.connect(execute)
+	for btn: OmnisButton in board.color_buttons:
+		btn.omnis_pressed.connect(execute)
+
+func get_trial_bit(trial: Trials) -> int:
+	return ((trial & (1 << trial)) >> 1)
+
+func get_trial_value(trial: Trials) -> int:
+	return (trial & (1 << trial))
+
+func flip_trial(trial: Trials) -> void:
+	(trial ^ (1 << trial))
+
+func is_trial_set(trial: Trials) -> bool:
+	return !!(trial & (1 << trial))
 
 func save_game() -> void:
 	pass
