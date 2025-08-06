@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bajflmusqmpyk"]
+
+[ext_resource type="Script" uid="uid://dvci3d1h8qgoa" path="res://Scripts/OmnisTitle.gd" id="1_ra2w7"]
+[ext_resource type="PackedScene" uid="uid://d1irmmbnqwggj" path="res://Scenes/OmnisGame.tscn" id="2_jmkju"]
+[ext_resource type="Texture2D" uid="uid://ds2kdeoocjwr4" path="res://Videos/Background.png" id="3_4wcih"]
+[ext_resource type="PackedScene" uid="uid://bmoirptkgr7q0" path="res://Scenes/OmnisBoard.tscn" id="4_ur18r"]
+
+[node name="Title" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_ra2w7")
+new_game = ExtResource("2_jmkju")
+
+[node name="Back" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_4wcih")
+
+[node name="Start" parent="." instance=ExtResource("4_ur18r")]
+layout_mode = 1
