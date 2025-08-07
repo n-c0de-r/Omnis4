@@ -4,6 +4,7 @@ extends Control
 @export_group("Buttons")
 @export var buttons_ring: Control
 @export var color_buttons: Array[TextureButton]
+@export var mid_button: TextureButton
 
 @export_group("Icons", "icon_")
 @export var icon_tex_rects: Array[TextureRect]
@@ -47,11 +48,6 @@ func _process(_delta: float) -> void:
 func disable_ring(state: bool):
 	for btn in color_buttons:
 		btn.disabled = state
-
-func toggle_buttons(state: bool):
-	for i in range(0, color_buttons.size()-1):
-		color_buttons[i].toggle_mode = state
-		color_buttons[i].set_pressed_no_signal(false)
 
 ## Rotates the game ring by random 90 degrees
 func rotate() -> void:

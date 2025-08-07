@@ -29,8 +29,8 @@ var is_rotating: bool = false
 #region Built-Ins
 func _ready() -> void:
 	board.disable_ring(true)
-	if (Globals.mode == Globals.Modes.REVERSE):
-		_flip_direction()
+	#if (Globals.mode == Globals.Modes.REVERSE):
+		#_flip_direction()
 	
 	is_flipped = Globals.mode == Globals.Modes.FLIP
 	is_random = Globals.mode == Globals.Modes.RANDOM

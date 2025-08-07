@@ -48,6 +48,10 @@ text = "Spiral"
 [node name="Label" parent="ButtonsRing/MenuMiddle" index="1"]
 text = "Back"
 
+[connection signal="toggled" from="ButtonsRing/OptionUp" to="." method="_on_rotate_trial_toggled"]
+[connection signal="toggled" from="ButtonsRing/OptionRight" to="." method="_on_double_trial_toggled"]
+[connection signal="toggled" from="ButtonsRing/OptionDown" to="." method="_on_mirror_trial_toggled"]
+[connection signal="toggled" from="ButtonsRing/OptionLeft" to="." method="_on_spiral_trial_toggled"]
 [connection signal="pressed" from="ButtonsRing/MenuMiddle" to="." method="_on_back_to_start_pressed"]
 
 [editable path="ButtonsRing/OptionUp"]

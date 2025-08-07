@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dkd50lnuno7h2" path="res://Scenes/game_middle.tscn" id="3_1xm0o"]
 [ext_resource type="Theme" uid="uid://yoehfgx3aqs4" path="res://etc/main_theme.tres" id="4_eivnq"]
 
-[node name="Board" type="Control" node_paths=PackedStringArray("buttons_ring", "color_buttons", "icon_tex_rects", "text_labels")]
+[node name="Board" type="Control" node_paths=PackedStringArray("buttons_ring", "color_buttons", "mid_button", "icon_tex_rects", "text_labels")]
 self_modulate = Color(1, 0, 1, 1)
 layout_mode = 3
 anchors_preset = 8
@@ -20,7 +20,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_ab3qr")
 buttons_ring = NodePath("ButtonsRing")
-color_buttons = [NodePath("ButtonsRing/BLUE"), NodePath("ButtonsRing/RED"), NodePath("ButtonsRing/YELLOW"), NodePath("ButtonsRing/GREEN"), NodePath("ButtonsRing/MIDDLE")]
+color_buttons = [NodePath("ButtonsRing/BLUE"), NodePath("ButtonsRing/RED"), NodePath("ButtonsRing/YELLOW"), NodePath("ButtonsRing/GREEN")]
+mid_button = NodePath("ButtonsRing/MIDDLE")
 icon_tex_rects = [NodePath("Icons/IconUp"), NodePath("Icons/IconRight"), NodePath("Icons/IconDown"), NodePath("Icons/IconLeft"), NodePath("Icons/IconMiddle")]
 text_labels = [NodePath("Texts/LabelUp"), NodePath("Texts/LabelRight"), NodePath("Texts/LabelDown"), NodePath("Texts/LabelLeft"), NodePath("Texts/LabelMiddle")]
 text_strings = Array[String](["", "", "", "", ""])

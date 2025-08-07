@@ -14,7 +14,7 @@ enum Symbols { CLEAR, ARROWS, SHAPES, ANIMALS }
 
 #region Values
 var mode: int = Modes.NORMAL
-var trial: int = 1<<Trials.ROTATE
+var trial: int = 0
 var cue: int = Cues.COLOR
 var sound: int = Sounds.ORIGINAL
 var symbol: int = Symbols.CLEAR
@@ -26,17 +26,29 @@ func connect_signals(board: Control, execute: Callable) -> void:
 	for btn: TextureButton in board.color_buttons:
 		btn.omnis_pressed.connect(execute)
 
+func set_trial_bit(shift: Trials) -> void:
+	trial |= ~(1 << shift)
+
+
 func get_trial_bit(check: Trials) -> int:
 	return ((trial & (1 << check)) >> 1)
 
-func get_trial_value(check: Trials) -> int:
-	return (trial & (1 << check))
+
+func clear_trial_bit(shift: Trials) -> void:
+	trial &= ~(1 << shift)
+
 
 func flip_trial(check: Trials) -> void:
 	trial ^= (1 << check)
 
+
+func get_trial_value(check: Trials) -> int:
+	return (trial & (1 << check))
+
+
 func is_trial_set(check: Trials) -> bool:
 	return !!(trial & (1 << check))
+
 
 func save_game() -> void:
 	pass
