@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d0yx8sussce3n"]
 
-[ext_resource type="PackedScene" uid="uid://d1irmmbnqwggj" path="res://Scenes/OmnisGame.tscn" id="1_halqv"]
-[ext_resource type="Texture2D" uid="uid://ds2kdeoocjwr4" path="res://Videos/Background.png" id="2_2143w"]
+[ext_resource type="PackedScene" uid="uid://d1irmmbnqwggj" path="res://Scenes/omnis_game.tscn" id="1_halqv"]
+[ext_resource type="Texture2D" uid="uid://ds2kdeoocjwr4" path="res://Videos/omnis_back.png" id="2_2143w"]
 [ext_resource type="Theme" uid="uid://yoehfgx3aqs4" path="res://etc/main_theme.tres" id="3_81d6b"]
 
 [sub_resource type="GDScript" id="GDScript_ekrfg"]

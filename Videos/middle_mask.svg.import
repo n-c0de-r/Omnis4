@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://bs461nvqbp5e2"
+path="res://.godot/imported/middle_mask.svg-0b7e0faab2f7b23459265e7796ff2d63.res"
+
+[deps]
+
+source_file="res://Videos/middle_mask.svg"
+dest_files=["res://.godot/imported/middle_mask.svg-0b7e0faab2f7b23459265e7796ff2d63.res"]
+
+[params]
+
+create_from=0
+threshold=0.5

@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://bajflmusqmpyk"]
+
+[ext_resource type="PackedScene" uid="uid://d1irmmbnqwggj" path="res://Scenes/omnis_game.tscn" id="2_e4gxx"]
+[ext_resource type="Texture2D" uid="uid://ds2kdeoocjwr4" path="res://Videos/omnis_back.png" id="3_s6ep0"]
+[ext_resource type="PackedScene" uid="uid://dq6cvmi8unnjl" path="res://Scenes/menu_start.tscn" id="5_e4gxx"]
+[ext_resource type="PackedScene" uid="uid://bgxovikljq3en" path="res://Scenes/menu_modes.tscn" id="5_rsrgd"]
+[ext_resource type="PackedScene" uid="uid://cx8msa4w54ynh" path="res://Scenes/menu_options.tscn" id="5_s6ep0"]
+[ext_resource type="PackedScene" uid="uid://tugd1spswuv1" path="res://Scenes/menu_trials.tscn" id="7_lrwb1"]
+
+[node name="Title" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="Back" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_s6ep0")
+
+[node name="Start" parent="." node_paths=PackedStringArray("_modes_menu", "_options_menu", "_trials_menu") instance=ExtResource("5_e4gxx")]
+layout_mode = 1
+_new_game = ExtResource("2_e4gxx")
+_modes_menu = NodePath("../Modes")
+_options_menu = NodePath("../Options")
+_trials_menu = NodePath("../Trials")
+
+[node name="Modes" parent="." instance=ExtResource("5_rsrgd")]
+visible = false
+layout_mode = 1
+
+[node name="Options" parent="." instance=ExtResource("5_s6ep0")]
+visible = false
+layout_mode = 1
+
+[node name="Trials" parent="." instance=ExtResource("7_lrwb1")]
+visible = false
+layout_mode = 1

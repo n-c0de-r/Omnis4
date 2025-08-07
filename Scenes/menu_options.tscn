@@ -1,0 +1,57 @@
+[gd_scene load_steps=11 format=3 uid="uid://cx8msa4w54ynh"]
+
+[ext_resource type="PackedScene" uid="uid://droabd3ooa2xc" path="res://Scenes/menu_ring.tscn" id="1_31ajj"]
+[ext_resource type="Script" uid="uid://0bp6hgbuh66c" path="res://Scripts/menu_options.gd" id="2_31ajj"]
+[ext_resource type="Texture2D" uid="uid://pxphf5m5mkl5" path="res://Videos/icon_trial_rotate_on.svg" id="3_pk7ao"]
+[ext_resource type="Texture2D" uid="uid://dfuv6b0dq6ueo" path="res://Videos/icon_trial_rotate_off.svg" id="4_n8voy"]
+[ext_resource type="Texture2D" uid="uid://db2vf1f0tabh3" path="res://Videos/icon_trial_double_on.svg" id="5_08d5y"]
+[ext_resource type="Texture2D" uid="uid://vm07vn0cduwb" path="res://Videos/icon_trial_double_off.svg" id="6_4nofe"]
+[ext_resource type="Texture2D" uid="uid://c6j6j1vrdh2" path="res://Videos/icon_trial_mirror_on.svg" id="7_vxo0h"]
+[ext_resource type="Texture2D" uid="uid://cggy3437stim7" path="res://Videos/icon_trial_mirror_off.svg" id="8_rp128"]
+[ext_resource type="Texture2D" uid="uid://8sdc4dhx6goy" path="res://Videos/icon_trial_spiral_on.svg" id="9_rdrsg"]
+[ext_resource type="Texture2D" uid="uid://coj2xfsknjies" path="res://Videos/icon_trial_spiral_off.svg" id="10_yuvlx"]
+
+[node name="Options" instance=ExtResource("1_31ajj")]
+script = ExtResource("2_31ajj")
+
+[node name="OptionUp" parent="ButtonsRing" index="0"]
+_icon_on = ExtResource("3_pk7ao")
+_icon_off = ExtResource("4_n8voy")
+
+[node name="Label" parent="ButtonsRing/OptionUp" index="1"]
+text = "Rotate"
+
+[node name="OptionRight" parent="ButtonsRing" index="1"]
+_icon_on = ExtResource("5_08d5y")
+_icon_off = ExtResource("6_4nofe")
+
+[node name="Label" parent="ButtonsRing/OptionRight" index="1"]
+text = "Double"
+
+[node name="OptionDown" parent="ButtonsRing" index="2"]
+_icon_on = ExtResource("7_vxo0h")
+_icon_off = ExtResource("8_rp128")
+
+[node name="Icon" parent="ButtonsRing/OptionDown" index="0"]
+flip_h = true
+
+[node name="Label" parent="ButtonsRing/OptionDown" index="1"]
+text = "Mirror"
+
+[node name="OptionLeft" parent="ButtonsRing" index="3"]
+_icon_on = ExtResource("9_rdrsg")
+_icon_off = ExtResource("10_yuvlx")
+
+[node name="Label" parent="ButtonsRing/OptionLeft" index="1"]
+text = "Spiral"
+
+[node name="Label" parent="ButtonsRing/MenuMiddle" index="1"]
+text = "Back"
+
+[connection signal="pressed" from="ButtonsRing/MenuMiddle" to="." method="_on_back_to_start_pressed"]
+
+[editable path="ButtonsRing/OptionUp"]
+[editable path="ButtonsRing/OptionRight"]
+[editable path="ButtonsRing/OptionDown"]
+[editable path="ButtonsRing/OptionLeft"]
+[editable path="ButtonsRing/MenuMiddle"]

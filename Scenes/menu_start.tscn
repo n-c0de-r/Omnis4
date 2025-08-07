@@ -1,0 +1,71 @@
+[gd_scene load_steps=13 format=3 uid="uid://dq6cvmi8unnjl"]
+
+[ext_resource type="PackedScene" uid="uid://droabd3ooa2xc" path="res://Scenes/menu_ring.tscn" id="1_6af1h"]
+[ext_resource type="Texture2D" uid="uid://ba1qv0ms67asw" path="res://Videos/icon_new_game_on.svg" id="2_rv1rd"]
+[ext_resource type="Texture2D" uid="uid://dxqyikp47ff0c" path="res://Videos/icon_new_game_off.svg" id="2_sko71"]
+[ext_resource type="Script" uid="uid://c8wrnbajl4ogw" path="res://Scripts/menu_start.gd" id="2_smgpn"]
+[ext_resource type="Texture2D" uid="uid://cwagrve2o027e" path="res://Videos/icon_modes_on.svg" id="3_kihoa"]
+[ext_resource type="Texture2D" uid="uid://cf8fukuumcpwq" path="res://Videos/icon_options_on.svg" id="4_ewygo"]
+[ext_resource type="Texture2D" uid="uid://b5gf8i8jr2he" path="res://Videos/icon_modes_off.svg" id="5_ifbbq"]
+[ext_resource type="Texture2D" uid="uid://dgi4dcmcvf486" path="res://Videos/icon_quit_game_on.svg" id="5_xplyj"]
+[ext_resource type="Texture2D" uid="uid://bjrj348g1jcss" path="res://Videos/icon_quit_game_off.svg" id="6_ifbbq"]
+[ext_resource type="Texture2D" uid="uid://gvsunmw70yxb" path="res://Videos/icon_options_off.svg" id="6_xplyj"]
+[ext_resource type="Texture2D" uid="uid://ckg85yfmenymq" path="res://Videos/icon_trials_on.svg" id="8_ppqay"]
+[ext_resource type="Texture2D" uid="uid://p4wf4w3o1wpc" path="res://Videos/icon_trials_off.svg" id="9_smgpn"]
+
+[node name="StartMenu" instance=ExtResource("1_6af1h")]
+script = ExtResource("2_smgpn")
+
+[node name="OptionUp" parent="ButtonsRing" index="0"]
+toggle_mode = false
+_icon_on = ExtResource("2_rv1rd")
+_icon_off = ExtResource("2_sko71")
+
+[node name="Label" parent="ButtonsRing/OptionUp" index="1"]
+text = "New Game"
+
+[node name="OptionRight" parent="ButtonsRing" index="1"]
+toggle_mode = false
+_icon_on = ExtResource("3_kihoa")
+_icon_off = ExtResource("5_ifbbq")
+
+[node name="Label" parent="ButtonsRing/OptionRight" index="1"]
+text = "Modes"
+
+[node name="OptionDown" parent="ButtonsRing" index="2"]
+toggle_mode = false
+_icon_on = ExtResource("4_ewygo")
+_icon_off = ExtResource("6_xplyj")
+
+[node name="Label" parent="ButtonsRing/OptionDown" index="1"]
+text = "Options"
+
+[node name="OptionLeft" parent="ButtonsRing" index="3"]
+toggle_mode = false
+_icon_on = ExtResource("8_ppqay")
+_icon_off = ExtResource("9_smgpn")
+
+[node name="Icon" parent="ButtonsRing/OptionLeft" index="0"]
+rotation = 1.5708
+
+[node name="Label" parent="ButtonsRing/OptionLeft" index="1"]
+text = "Trials"
+
+[node name="MenuMiddle" parent="ButtonsRing" index="4"]
+_icon_on = ExtResource("5_xplyj")
+_icon_off = ExtResource("6_ifbbq")
+
+[node name="Label" parent="ButtonsRing/MenuMiddle" index="1"]
+text = "QUIT"
+
+[connection signal="pressed" from="ButtonsRing/OptionUp" to="." method="_on_option_up_pressed"]
+[connection signal="pressed" from="ButtonsRing/OptionRight" to="." method="_on_option_right_pressed"]
+[connection signal="pressed" from="ButtonsRing/OptionDown" to="." method="_on_option_down_pressed"]
+[connection signal="pressed" from="ButtonsRing/OptionLeft" to="." method="_on_option_left_pressed"]
+[connection signal="pressed" from="ButtonsRing/MenuMiddle" to="." method="_on_menu_middle_pressed"]
+
+[editable path="ButtonsRing/OptionUp"]
+[editable path="ButtonsRing/OptionRight"]
+[editable path="ButtonsRing/OptionDown"]
+[editable path="ButtonsRing/OptionLeft"]
+[editable path="ButtonsRing/MenuMiddle"]

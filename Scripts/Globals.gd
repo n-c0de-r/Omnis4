@@ -22,21 +22,21 @@ var symbol: int = Symbols.CLEAR
 
 #region Public Functions
 ## Connects a selected board's child buttons to it's current parent object
-func connect_signals(board: OmnisBoard, execute: Callable) -> void:
-	for btn: OmnisButton in board.color_buttons:
+func connect_signals(board: Control, execute: Callable) -> void:
+	for btn: TextureButton in board.color_buttons:
 		btn.omnis_pressed.connect(execute)
 
-func get_trial_bit(trial: Trials) -> int:
-	return ((trial & (1 << trial)) >> 1)
+func get_trial_bit(check: Trials) -> int:
+	return ((trial & (1 << check)) >> 1)
 
-func get_trial_value(trial: Trials) -> int:
-	return (trial & (1 << trial))
+func get_trial_value(check: Trials) -> int:
+	return (trial & (1 << check))
 
-func flip_trial(trial: Trials) -> void:
-	(trial ^ (1 << trial))
+func flip_trial(check: Trials) -> void:
+	trial ^= (1 << check)
 
-func is_trial_set(trial: Trials) -> bool:
-	return !!(trial & (1 << trial))
+func is_trial_set(check: Trials) -> bool:
+	return !!(trial & (1 << check))
 
 func save_game() -> void:
 	pass

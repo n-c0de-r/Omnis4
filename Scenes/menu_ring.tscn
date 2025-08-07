@@ -1,0 +1,108 @@
+[gd_scene load_steps=5 format=3 uid="uid://droabd3ooa2xc"]
+
+[ext_resource type="PackedScene" uid="uid://cgtac1kc8rgpn" path="res://Scenes/menu_button.tscn" id="2_m4f14"]
+[ext_resource type="PackedScene" uid="uid://c2jcts8rn4dti" path="res://Scenes/menu_middle.tscn" id="3_lr7k5"]
+[ext_resource type="Texture2D" uid="uid://dwcbmcnew11o1" path="res://Videos/icon_back_on.svg" id="3_m4f14"]
+[ext_resource type="Texture2D" uid="uid://pj5pmgehbj6v" path="res://Videos/icon_back_off.svg" id="4_a3xl4"]
+
+[node name="Menu" type="Control"]
+self_modulate = Color(1, 0, 1, 1)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ButtonsRing" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OptionUp" parent="ButtonsRing" instance=ExtResource("2_m4f14")]
+self_modulate = Color(0, 0, 1, 1)
+layout_mode = 1
+offset_top = -310.0
+offset_bottom = -110.0
+
+[node name="OptionRight" parent="ButtonsRing" instance=ExtResource("2_m4f14")]
+self_modulate = Color(1, 0, 0, 1)
+layout_mode = 1
+offset_top = -310.0
+offset_bottom = -110.0
+rotation = 1.5708
+
+[node name="Label" parent="ButtonsRing/OptionRight" index="1"]
+offset_left = -12.5
+offset_top = -330.0
+offset_right = 12.5
+offset_bottom = 70.0
+rotation = -1.5708
+pivot_offset = Vector2(12.5, 200)
+
+[node name="on_off" parent="ButtonsRing/OptionRight/Label" index="0"]
+offset_left = 37.5
+offset_top = -200.0
+offset_right = 62.5
+offset_bottom = 200.0
+pivot_offset = Vector2(12.5, 200)
+
+[node name="OptionDown" parent="ButtonsRing" instance=ExtResource("2_m4f14")]
+self_modulate = Color(1, 1, 0, 1)
+layout_mode = 1
+offset_top = -310.0
+offset_bottom = -110.0
+rotation = 3.14159
+
+[node name="Label" parent="ButtonsRing/OptionDown" index="1"]
+rotation = 3.14159
+
+[node name="on_off" parent="ButtonsRing/OptionDown/Label" index="0"]
+offset_top = 25.0
+offset_bottom = 100.0
+
+[node name="OptionLeft" parent="ButtonsRing" instance=ExtResource("2_m4f14")]
+self_modulate = Color(0, 1, 0, 1)
+layout_mode = 1
+offset_top = -310.0
+offset_bottom = -110.0
+rotation = 4.71239
+
+[node name="Label" parent="ButtonsRing/OptionLeft" index="1"]
+offset_left = -12.5
+offset_top = -330.0
+offset_right = 12.5
+offset_bottom = 70.0
+rotation = -4.71239
+pivot_offset = Vector2(12.5, 200)
+
+[node name="on_off" parent="ButtonsRing/OptionLeft/Label" index="0"]
+offset_left = -62.5
+offset_top = -200.0
+offset_right = -37.5
+offset_bottom = 200.0
+pivot_offset = Vector2(12.5, 200)
+
+[node name="MenuMiddle" parent="ButtonsRing" instance=ExtResource("3_lr7k5")]
+self_modulate = Color(1, 0, 1, 1)
+layout_mode = 1
+pivot_offset = Vector2(123, 123)
+toggle_mode = false
+_icon_on = ExtResource("3_m4f14")
+_icon_off = ExtResource("4_a3xl4")
+
+[editable path="ButtonsRing/OptionUp"]
+[editable path="ButtonsRing/OptionRight"]
+[editable path="ButtonsRing/OptionDown"]
+[editable path="ButtonsRing/OptionLeft"]
+[editable path="ButtonsRing/MenuMiddle"]
