@@ -24,11 +24,13 @@ var has_tweened = false
 #region Built-Ins
 func _ready() -> void:
 	for i in color_buttons.size():
-			#icon_textures[i].global_position = color_buttons[i].get_icon_position()
-			#text_labels[i].position = text_positions[i].position - (text_labels[i].size / 2)
-			
-			text_labels[i].text = text_strings[i]
-			color_buttons[i].name = text_strings[i]
+		#icon_textures[i].global_position = color_buttons[i].get_icon_position()
+		#text_labels[i].position = text_positions[i].position - (text_labels[i].size / 2)
+		
+		text_labels[i].text = text_strings[i]
+		color_buttons[i].name = text_strings[i]
+	text_labels[4].text = text_strings[4]
+	mid_button.name = text_strings[4]
 
 func _process(_delta: float) -> void:
 	if (not (ring_tween == null) and not ring_tween.is_running()):
@@ -48,6 +50,7 @@ func _process(_delta: float) -> void:
 func disable_ring(state: bool):
 	for btn in color_buttons:
 		btn.disabled = state
+	mid_button.disabled = state
 
 ## Rotates the game ring by random 90 degrees
 func rotate() -> void:
@@ -55,7 +58,7 @@ func rotate() -> void:
 	ring_tween = get_tree().create_tween()
 	# Generates a -1 or +1 only
 	var dir: int = (randi_range(0, 1) << 1) - 1
-	ring_tween.tween_property(buttons_ring, "rotation_degrees", buttons_ring.rotation_degrees + (dir*ROTATE_DEGREES), Globals.speed)
+	ring_tween.tween_property(buttons_ring, "rotation_degrees", buttons_ring.rotation_degrees + (dir*ROTATE_DEGREES), 0.5)
 	has_tweened = true
 	
 #endregion Public Functions

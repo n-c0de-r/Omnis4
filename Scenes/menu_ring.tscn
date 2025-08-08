@@ -35,6 +35,9 @@ layout_mode = 1
 offset_top = -310.0
 offset_bottom = -110.0
 
+[node name="Label" parent="ButtonsRing/OptionUp" index="1"]
+offset_top = -175.0
+
 [node name="OptionRight" parent="ButtonsRing" instance=ExtResource("2_m4f14")]
 self_modulate = Color(1, 0, 0, 1)
 layout_mode = 1
@@ -65,6 +68,7 @@ offset_bottom = -110.0
 rotation = 3.14159
 
 [node name="Label" parent="ButtonsRing/OptionDown" index="1"]
+offset_bottom = -125.0
 rotation = 3.14159
 
 [node name="on_off" parent="ButtonsRing/OptionDown/Label" index="0"]

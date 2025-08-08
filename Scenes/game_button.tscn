@@ -21,6 +21,7 @@ pivot_offset = Vector2(203.5, 310)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_default_cursor_shape = 2
+disabled = true
 keep_pressed_outside = true
 texture_normal = ExtResource("1_jfvab")
 texture_pressed = ExtResource("2_rcyxg")
