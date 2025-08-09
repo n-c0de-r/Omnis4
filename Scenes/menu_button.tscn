@@ -30,6 +30,8 @@ texture_click_mask = ExtResource("3_kg4rv")
 script = ExtResource("4_5fh31")
 _icon = NodePath("Icon")
 _state = NodePath("Label/on_off")
+metadata/on = "on"
+metadata/off = "off"
 
 [node name="Icon" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(100, 100)

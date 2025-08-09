@@ -3,7 +3,7 @@
    id="emoji"
    viewBox="0 0 72 72"
    version="1.1"
-   sodipodi:docname="1F51A(1).svg"
+   sodipodi:docname="icon_back_on.svg"
    inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -21,22 +21,20 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="6.9861111"
-     inkscape:cx="35.928429"
-     inkscape:cy="36"
+     inkscape:cx="35.856859"
+     inkscape:cy="35.856859"
      inkscape:window-width="1360"
      inkscape:window-height="705"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
      inkscape:current-layer="emoji" />
-  <g
-     id="color"
-     transform="translate(0,5.7568741)">
-    <path
-       fill="#3f3f3f"
-       d="M 56.25,31.81 V 25.676 H 28.41 v -8.433 l -12.66,11.5 12.66,11.5 V 31.81 Z"
-       id="path1" />
-  </g>
+  <path
+     fill="#3f3f3f"
+     d="M 56.25,31.81 V 25.676 H 28.41 v -8.433 l -12.66,11.5 12.66,11.5 V 31.81 Z"
+     id="path1"
+     transform="translate(0,5.7568741)"
+     style="fill:#ffffff" />
   <path
      fill="none"
      stroke="#000000"

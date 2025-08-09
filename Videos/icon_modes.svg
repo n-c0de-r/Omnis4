@@ -3,7 +3,7 @@
    id="emoji"
    viewBox="0 0 72 72"
    version="1.1"
-   sodipodi:docname="1F4A0.svg"
+   sodipodi:docname="icon_modes_on.svg"
    inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -21,58 +21,20 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="6.9861111"
-     inkscape:cx="35.928429"
-     inkscape:cy="36"
+     inkscape:cx="35.856859"
+     inkscape:cy="35.856859"
      inkscape:window-width="1360"
      inkscape:window-height="705"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
      inkscape:current-layer="emoji" />
-  <rect
-     x="-16.921104"
-     y="34.139141"
-     width="17.755821"
-     height="17.755821"
-     transform="matrix(0.68808363,-0.72563139,0.68808371,0.72563132,0,0)"
-     fill="#92d3f5"
+  <path
      id="rect9"
-     style="fill:#00ff00;stroke-width:0.518438" />
-  <rect
-     x="-15.472858"
-     y="50.446701"
-     width="17.755821"
-     height="17.755821"
+     style="fill:#ffffff;stroke-width:0.518438"
+     d="m 18.59065,34.14015 c -11.8372789,-0.0023 -23.6743915,-0.0016 -35.511514,-9.52e-4 l 1.449041,34.063421 34.062002,1.447626 z"
      transform="matrix(0.68808363,-0.72563139,0.68808371,0.72563132,0,0)"
-     fill="#92d3f5"
-     id="rect8"
-     style="fill:#ffff00;stroke-width:0.518438" />
-  <rect
-     x="0.83471704"
-     y="34.139141"
-     width="17.755821"
-     height="17.755821"
-     transform="matrix(0.68808363,-0.72563139,0.68808371,0.72563132,0,0)"
-     fill="#92d3f5"
-     id="rect7"
-     style="stroke-width:0.518438;fill:#0000ff" />
-  <rect
-     x="0.83471608"
-     y="51.894962"
-     width="17.755821"
-     height="17.755821"
-     transform="matrix(0.68808363,-0.72563139,0.68808371,0.72563132,0,0)"
-     fill="#92d3f5"
-     id="rect1"
-     style="fill:#ff0000;stroke-width:0.518438" />
-  <rect
-     x="31.757401"
-     y="32.757401"
-     width="8.4853001"
-     height="8.4853001"
-     fill="#e27022"
-     id="rect2"
-     style="fill:#ffffff" />
+     sodipodi:nodetypes="ccccc" />
   <g
      id="line">
     <line
@@ -132,15 +94,16 @@
        stroke-width="2"
        id="rect5" />
     <rect
-       x="31.7574"
-       y="32.7574"
-       width="8.4853"
-       height="8.4853"
+       x="31.757401"
+       y="32.757401"
+       width="8.4853001"
+       height="8.4853001"
        fill="none"
-       stroke="#000"
+       stroke="#000000"
        stroke-linecap="round"
        stroke-linejoin="round"
        stroke-width="2"
-       id="rect6" />
+       id="rect6"
+       style="display:inline" />
   </g>
 </svg>

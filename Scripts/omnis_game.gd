@@ -30,22 +30,29 @@ var is_rotating: bool = false
 #region Built-Ins
 func _ready() -> void:
 	_init_values()
-	_connect_signals()
 	_setButtons()
+	_connect_signals()
 #endregion Built-Ins
 
+
 #region Private Funtions
+## Connects a selected board's child buttons to it's current parent object
+func _connect_signals() -> void:
+	for btn: TextureButton in board.color_buttons:
+		btn.game_button_pressed.connect(_evaluate)
+
+
 ## Sets the initial values for the game,
 ## according to the Global settings
 func _init_values():
 	effect = Globals.effect
 	speed = Globals.speed
 	
-	if (Globals.mode == Globals.Modes.REVERSE):
+	if Globals.mode == Globals.Modes.REVERSE:
 		_flip_direction()
 	
-	is_flipped = Globals.mode == Globals.Modes.FLIP
-	is_random = Globals.mode == Globals.Modes.RANDOM
+	is_flipped = Globals.mode == Globals.Modes.FLIP | Globals.Modes.HELL
+	is_random = Globals.mode == Globals.Modes.RANDOM | Globals.Modes.HELL
 	
 	double_counter = Globals.get_trial_bit(Globals.Trials.DOUBLE)
 	mirror_shift = Globals.get_trial_bit(Globals.Trials.MIRROR)
@@ -53,18 +60,12 @@ func _init_values():
 	is_rotating = Globals.is_trial_set(Globals.Trials.ROTATE)
 
 
-## Connects the gameboards' buttons
-func _connect_signals() -> void:
-	for btn: TextureButton in board.color_buttons:
-		btn.omnis_pressed.connect(_evaluate)
-
-
 ## Sets options for the buttons
 func _setButtons() -> void:
 	button_list = board.color_buttons.duplicate()
 	button_count = button_list.size()
 	for btn: TextureButton in button_list:
-		btn._simulatePress(speed / 4.0, effect)
+		btn.simulatePress(speed / 4.0, effect)
 		await get_tree().create_timer(speed  / 2.0).timeout
 	
 	_generate_rounds(rounds_played)
@@ -97,7 +98,7 @@ func _generate_rounds(count: int):
 
 func _play_list()-> void:
 	for btn in show_list:
-		btn._simulatePress(speed, effect)
+		btn.simulatePress(speed, effect)
 		await get_tree().create_timer(speed * 2).timeout
 		
 	if (is_rotating):

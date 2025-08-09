@@ -7,33 +7,19 @@ extends Control
 @export var _trials_menu: Control
 #endregion Exports
 
-
-#region Values
 var previous_menu: Control
-#endregion Values
 
 
-func _on_option_up_pressed() -> void:
-	get_tree().change_scene_to_packed(_new_game)
-
-
-func _on_option_right_pressed() -> void:
+func _on_section_selected(option: Globals.Options):
 	visible = false
-	_modes_menu.visible = true
-	_modes_menu.previous_menu = self
-
-
-func _on_option_down_pressed() -> void:
-	visible = false
-	_options_menu.visible = true
-	_options_menu.previous_menu = self
-
-
-func _on_option_left_pressed() -> void:
-	visible = false
-	_trials_menu.visible = true
-	_trials_menu.previous_menu = self
-
-
-func _on_menu_middle_pressed() -> void:
-	get_tree().quit()
+	match(option):
+		Globals.Options.BLUE:
+			get_tree().change_scene_to_packed(_new_game)
+		Globals.Options.RED:
+			Globals.switch_menu(self, _modes_menu)
+		Globals.Options.YELLOW:
+			Globals.switch_menu(self, _options_menu)
+		Globals.Options.GREEN:
+			Globals.switch_menu(self, _trials_menu)
+		Globals.Options.PURPLE:
+			get_tree().quit()

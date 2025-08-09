@@ -37,34 +37,34 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="BLUE" parent="ButtonsRing" instance=ExtResource("2_22523")]
-self_modulate = Color(0, 0, 1, 1)
+self_modulate = Color(0.0980392, 0.0980392, 0.862745, 1)
 layout_mode = 1
 offset_top = -310.0
 offset_bottom = -110.0
 
 [node name="RED" parent="ButtonsRing" instance=ExtResource("2_22523")]
-self_modulate = Color(1, 0, 0, 1)
+self_modulate = Color(0.862745, 0.0980392, 0.0980392, 1)
 layout_mode = 1
 offset_top = -310.0
 offset_bottom = -110.0
 rotation = 1.5708
 
 [node name="YELLOW" parent="ButtonsRing" instance=ExtResource("2_22523")]
-self_modulate = Color(1, 1, 0, 1)
+self_modulate = Color(0.862745, 0.862745, 0.0980392, 1)
 layout_mode = 1
 offset_top = -310.0
 offset_bottom = -110.0
 rotation = 3.14159
 
 [node name="GREEN" parent="ButtonsRing" instance=ExtResource("2_22523")]
-self_modulate = Color(0, 1, 0, 1)
+self_modulate = Color(0.0980392, 0.862745, 0.0980392, 1)
 layout_mode = 1
 offset_top = -310.0
 offset_bottom = -110.0
 rotation = 4.71239
 
 [node name="MIDDLE" parent="ButtonsRing" instance=ExtResource("3_1xm0o")]
-self_modulate = Color(1, 0, 1, 1)
+self_modulate = Color(0.862745, 0.0980392, 0.862745, 1)
 layout_mode = 1
 
 [node name="Icons" type="Control" parent="."]
@@ -72,6 +72,7 @@ layout_mode = 1
 anchors_preset = 0
 
 [node name="IconUp" type="TextureRect" parent="Icons"]
+self_modulate = Color(0.86, 0.86, 0.3096, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -88,6 +89,7 @@ pivot_offset = Vector2(50, 50)
 mouse_filter = 2
 
 [node name="IconRight" type="TextureRect" parent="Icons"]
+self_modulate = Color(0.3096, 0.86, 0.3096, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -104,6 +106,7 @@ pivot_offset = Vector2(50, 50)
 mouse_filter = 2
 
 [node name="IconDown" type="TextureRect" parent="Icons"]
+self_modulate = Color(0.3096, 0.3096, 0.86, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -120,6 +123,7 @@ pivot_offset = Vector2(50, 50)
 mouse_filter = 2
 
 [node name="IconLeft" type="TextureRect" parent="Icons"]
+self_modulate = Color(0.86, 0.3096, 0.3096, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -136,6 +140,7 @@ pivot_offset = Vector2(50, 50)
 mouse_filter = 2
 
 [node name="IconMiddle" type="TextureRect" parent="Icons"]
+self_modulate = Color(0.0980392, 0.0980392, 0.0980392, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

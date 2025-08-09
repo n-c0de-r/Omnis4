@@ -3,47 +3,48 @@
 [ext_resource type="PackedScene" uid="uid://droabd3ooa2xc" path="res://Scenes/menu_ring.tscn" id="1_hfgon"]
 [ext_resource type="Script" uid="uid://yrt4hxo28a2k" path="res://Scripts/menu_modes.gd" id="2_ahkdu"]
 [ext_resource type="ButtonGroup" uid="uid://nf66b3axncly" path="res://etc/group_modes.tres" id="3_6254n"]
-[ext_resource type="Texture2D" uid="uid://bl05cfel7oild" path="res://Videos/icon_mode_normal_on.svg" id="3_q44md"]
-[ext_resource type="Texture2D" uid="uid://c7er6wwo8w2av" path="res://Videos/icon_mode_reverse_on.svg" id="5_50sh2"]
-[ext_resource type="Texture2D" uid="uid://0juooqt47nk2" path="res://Videos/icon_mode_flip_on.svg" id="5_rbmq3"]
-[ext_resource type="Texture2D" uid="uid://dfuv6b0dq6ueo" path="res://Videos/icon_trial_rotate_off.svg" id="6_a5mpy"]
-[ext_resource type="Texture2D" uid="uid://1xtbhdbdbou1" path="res://Videos/icon_mode_random_on.svg" id="9_s7f5w"]
+[ext_resource type="Texture2D" uid="uid://c7er6wwo8w2av" path="res://Videos/icon_mode_reverse.svg" id="5_50sh2"]
+[ext_resource type="Texture2D" uid="uid://0juooqt47nk2" path="res://Videos/icon_mode_flip.svg" id="5_rbmq3"]
+[ext_resource type="Texture2D" uid="uid://dfuv6b0dq6ueo" path="res://Videos/icon_mode_off.svg" id="6_a5mpy"]
+[ext_resource type="Texture2D" uid="uid://ywoj4ss782rt" path="res://Videos/icon_mode_hell.svg" id="8_rbmq3"]
+[ext_resource type="Texture2D" uid="uid://1xtbhdbdbou1" path="res://Videos/icon_mode_random.svg" id="9_s7f5w"]
 
 [node name="Modes" instance=ExtResource("1_hfgon")]
 script = ExtResource("2_ahkdu")
 
 [node name="OptionUp" parent="ButtonsRing" index="0"]
-button_pressed = true
-button_group = ExtResource("3_6254n")
-_icon_on = ExtResource("3_q44md")
-_icon_off = ExtResource("6_a5mpy")
-
-[node name="Label" parent="ButtonsRing/OptionUp" index="1"]
-text = "Normal"
-
-[node name="OptionRight" parent="ButtonsRing" index="1"]
 button_group = ExtResource("3_6254n")
 _icon_on = ExtResource("5_50sh2")
 _icon_off = ExtResource("6_a5mpy")
 
-[node name="Label" parent="ButtonsRing/OptionRight" index="1"]
+[node name="Label" parent="ButtonsRing/OptionUp" index="1"]
 text = "Reverse"
 
-[node name="OptionDown" parent="ButtonsRing" index="2"]
+[node name="OptionRight" parent="ButtonsRing" index="1"]
 button_group = ExtResource("3_6254n")
 _icon_on = ExtResource("5_rbmq3")
 _icon_off = ExtResource("6_a5mpy")
 
-[node name="Label" parent="ButtonsRing/OptionDown" index="1"]
+[node name="Label" parent="ButtonsRing/OptionRight" index="1"]
+custom_minimum_size = Vector2(10, 25)
+offset_right = -2.5
 text = "Flip"
 
-[node name="OptionLeft" parent="ButtonsRing" index="3"]
+[node name="OptionDown" parent="ButtonsRing" index="2"]
 button_group = ExtResource("3_6254n")
 _icon_on = ExtResource("9_s7f5w")
 _icon_off = ExtResource("6_a5mpy")
 
-[node name="Label" parent="ButtonsRing/OptionLeft" index="1"]
+[node name="Label" parent="ButtonsRing/OptionDown" index="1"]
 text = "Random"
+
+[node name="OptionLeft" parent="ButtonsRing" index="3"]
+button_group = ExtResource("3_6254n")
+_icon_on = ExtResource("8_rbmq3")
+_icon_off = ExtResource("6_a5mpy")
+
+[node name="Label" parent="ButtonsRing/OptionLeft" index="1"]
+text = "Hell"
 
 [node name="MenuMiddle" parent="ButtonsRing" index="4"]
 button_mask = 5
@@ -51,11 +52,15 @@ button_mask = 5
 [node name="Label" parent="ButtonsRing/MenuMiddle" index="1"]
 text = "BACK"
 
-[connection signal="toggled" from="ButtonsRing/OptionUp" to="." method="_on_normal_mode_toggled"]
-[connection signal="toggled" from="ButtonsRing/OptionRight" to="." method="_on_reverse_mode_toggled"]
-[connection signal="toggled" from="ButtonsRing/OptionDown" to="." method="_on_flip_mode_toggled"]
-[connection signal="toggled" from="ButtonsRing/OptionLeft" to="." method="_on_random_mode_toggled"]
-[connection signal="pressed" from="ButtonsRing/MenuMiddle" to="." method="_on_back_to_start_pressed"]
+[connection signal="toggled" from="ButtonsRing/OptionUp" to="ButtonsRing/OptionUp" method="_on_toggled"]
+[connection signal="toggled" from="ButtonsRing/OptionUp" to="." method="_on_mode_selected" binds= [0]]
+[connection signal="toggled" from="ButtonsRing/OptionRight" to="ButtonsRing/OptionRight" method="_on_toggled"]
+[connection signal="toggled" from="ButtonsRing/OptionRight" to="." method="_on_mode_selected" binds= [1]]
+[connection signal="toggled" from="ButtonsRing/OptionDown" to="ButtonsRing/OptionDown" method="_on_toggled"]
+[connection signal="toggled" from="ButtonsRing/OptionDown" to="." method="_on_mode_selected" binds= [2]]
+[connection signal="toggled" from="ButtonsRing/OptionLeft" to="ButtonsRing/OptionLeft" method="_on_toggled"]
+[connection signal="toggled" from="ButtonsRing/OptionLeft" to="." method="_on_mode_selected" binds= [3]]
+[connection signal="pressed" from="ButtonsRing/MenuMiddle" to="." method="_on_mode_selected" binds= [false, 4]]
 
 [editable path="ButtonsRing/OptionUp"]
 [editable path="ButtonsRing/OptionRight"]

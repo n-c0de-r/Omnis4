@@ -3,16 +3,16 @@
    id="emoji"
    viewBox="0 0 72 72"
    version="1.1"
-   sodipodi:docname="icon_trial_double_on.svg"
+   sodipodi:docname="icon_quit_game.svg"
    inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
-     id="defs3" />
+     id="defs2" />
   <sodipodi:namedview
-     id="namedview3"
+     id="namedview2"
      pagecolor="#ffffff"
      bordercolor="#000000"
      borderopacity="0.25"
@@ -21,44 +21,26 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="6.9861111"
-     inkscape:cx="35.928429"
-     inkscape:cy="35.856859"
+     inkscape:cx="36"
+     inkscape:cy="36"
      inkscape:window-width="1360"
      inkscape:window-height="705"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
      inkscape:current-layer="emoji" />
-  <polyline
-     fill="#d0cfce"
-     points="54.9391 32.334 17.0608 32.334 17.0608 22.429 54.9321 22.429"
-     id="polyline1"
+  <path
+     fill="#ea5a47"
+     d="m58.14 21.78-7.76-8.013-14.29 14.22-14.22-14.22-8.013 8.013 14.36 14.22-14.36 14.22 8.014 8.013 14.22-14.22 14.29 14.22 7.76-8.013-14.22-14.22z"
+     id="path1"
      style="fill:#ffffff" />
-  <polyline
-     fill="#d0cfce"
-     points="54.9391 49.406 17.0608 49.406 17.0608 39.501 54.9321 39.501"
-     id="polyline2"
-     style="fill:#ffffff" />
-  <rect
-     x="17.0608"
-     y="22.3522"
-     width="37.8783"
-     height="10.2956"
+  <path
      fill="none"
      stroke="#000"
      stroke-linecap="round"
      stroke-linejoin="round"
+     stroke-miterlimit="10"
      stroke-width="2"
-     id="rect2" />
-  <rect
-     x="17.0608"
-     y="39.3522"
-     width="37.8783"
-     height="10.2956"
-     fill="none"
-     stroke="#000"
-     stroke-linecap="round"
-     stroke-linejoin="round"
-     stroke-width="2"
-     id="rect3" />
+     d="m58.14 21.78-7.76-8.013-14.29 14.22-14.22-14.22-8.013 8.013 14.35 14.22-14.35 14.22 8.014 8.013 14.22-14.22 14.29 14.22 7.76-8.013-14.22-14.22z"
+     id="path2" />
 </svg>

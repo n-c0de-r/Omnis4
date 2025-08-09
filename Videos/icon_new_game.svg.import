@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnehqjl4uf7ju"
-path="res://.godot/imported/icon_mode_flip_off.svg-771ca237939a3df9ee44a41192ba2d80.ctex"
+uid="uid://ba1qv0ms67asw"
+path="res://.godot/imported/icon_new_game.svg-44ddd6b395ecc14379d064033831b88f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Videos/icon_mode_flip_off.svg"
-dest_files=["res://.godot/imported/icon_mode_flip_off.svg-771ca237939a3df9ee44a41192ba2d80.ctex"]
+source_file="res://Videos/icon_new_game.svg"
+dest_files=["res://.godot/imported/icon_new_game.svg-44ddd6b395ecc14379d064033831b88f.ctex"]
 
 [params]
 

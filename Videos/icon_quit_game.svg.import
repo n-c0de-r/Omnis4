@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjrj348g1jcss"
-path="res://.godot/imported/icon_quit_game_off.svg-4f23b77094197f6622af1baa9c0c4bf7.ctex"
+uid="uid://c1htlbc7m55ci"
+path="res://.godot/imported/icon_quit_game.svg-2d9141d72cd893758a114f7ecfe5efde.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Videos/icon_quit_game_off.svg"
-dest_files=["res://.godot/imported/icon_quit_game_off.svg-4f23b77094197f6622af1baa9c0c4bf7.ctex"]
+source_file="res://Videos/icon_quit_game.svg"
+dest_files=["res://.godot/imported/icon_quit_game.svg-2d9141d72cd893758a114f7ecfe5efde.ctex"]
 
 [params]
 
