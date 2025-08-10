@@ -34,7 +34,6 @@ metadata/on = "on"
 metadata/off = "off"
 
 [node name="Icon" type="TextureRect" parent="."]
-self_modulate = Color(0.0980392, 0.862745, 0.0980392, 1)
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
 anchors_preset = 8

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ds2kdeoocjwr4" path="res://Videos/omnis_back.png" id="2_iu52v"]
 [ext_resource type="PackedScene" uid="uid://dkfosb8ask52l" path="res://Scenes/select_game.tscn" id="4_iu52v"]
 
-[node name="Game" type="Control" node_paths=PackedStringArray("board")]
+[node name="Game" type="Control" node_paths=PackedStringArray("board", "_timer")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -17,6 +17,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_y0byd")
 board = NodePath("GameBoard")
+_timer = NodePath("Timer")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -36,4 +37,9 @@ texture = ExtResource("2_iu52v")
 [node name="GameBoard" parent="." instance=ExtResource("4_iu52v")]
 layout_mode = 1
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="decision_made" from="GameBoard" to="." method="evaluate_decision"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

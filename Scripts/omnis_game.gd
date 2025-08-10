@@ -3,6 +3,7 @@ class_name OmnisGame
 
 #region Exports
 @export var board: SelectGame
+@export var _timer: Timer
 #endregion Exports
 
 #region Values
@@ -10,6 +11,8 @@ var _button_list: Array
 var _show_list: Array[int]
 var _guess_list: Array[int]
 
+const BASE_TIMEOUT: float = 3.0
+var _wait_time: float
 var _rounds_played: int = 1
 var _check_start: int = 0
 var _check_index: int = 0
@@ -17,10 +20,11 @@ var _check_direction: int = 1 # 1=normal, -1=reverse
 var _spiral_counter: int	= 1 # 1=normal, increases every round
 var _mirror_shift: int	= 0 # 0=normal, 2=mirrors color
 
-var _is_double: bool = false
-var _is_spiral: bool = false
 var _is_flipped: bool = false
 var _is_random: bool = false
+var _is_timed: bool = false
+var _is_double: bool = false
+var _is_spiral: bool = false
 #endregion Values
 
 #region Built-Ins
@@ -37,10 +41,12 @@ func evaluate_decision(selection: int) -> void:
 	if (_guess_list[_check_index] == selection):
 		_check_index += _check_direction
 	else:
-		board.play_list(_show_list)
-		_check_index = _check_start
+		#lose life
+		_restart_round()
 	
-	_finish_round()
+	var _guess_items: int = _guess_list.size()
+	if (_check_index >= _guess_items or _check_index < -_guess_items):
+		_finish_round()
 #endregion
 
 
@@ -53,8 +59,11 @@ func _init_values():
 	
 	_mirror_shift = 2 if Globals.get_option("mirror") else 0
 	
-	_is_flipped = Globals.get_option("flip")# | Globals.Modes.HELL
-	_is_random = Globals.get_option("random")# | Globals.Modes.HELL
+	_wait_time = BASE_TIMEOUT * Globals.get_speed()
+	
+	_is_flipped = Globals.get_option("flip")
+	_is_random = Globals.get_option("random")
+	_is_timed = Globals.get_option("timed")
 	_is_double = Globals.get_option("double")
 	_is_spiral = Globals.get_option("spiral")
 	
@@ -83,33 +92,43 @@ func _generate_rounds(count: int):
 	print("guess ", _guess_list)
 	print("dir ", _check_direction)
 	
-	board.play_list(_show_list)
-	_check_index = _check_start
+	_restart_round()
 
 
 func _finish_round() -> void:
-	var _guess_items: int = _guess_list.size()
-	if (_check_index >= _guess_items or _check_index < -_guess_items):
-		_rounds_played += 1
+	_rounds_played += 1
+	
+	if (_is_flipped):
+		_flip_direction()
+	
+	if _is_spiral:
+		_spiral_counter += 1
+	
+	if (_is_random):
+		_show_list.clear()
+		_guess_list.clear()
+		_generate_rounds(_rounds_played)
+	else:
+		_generate_rounds(_spiral_counter)
 		
-		if (_is_flipped):
-			_flip_direction()
-		
-		if _is_spiral:
-			_spiral_counter += 1
-		
-		if (_is_random):
-			_show_list.clear()
-			_guess_list.clear()
-			_generate_rounds(_rounds_played)
-		else:
-			_generate_rounds(_spiral_counter)
-			
-		_check_index = _check_start
+	_check_index = _check_start
 
 
 func _flip_direction() -> void:
 	_check_start -= _check_direction
 	_check_direction = 0 - _check_direction
 	_check_index = _check_start
+
+
+func _restart_round() -> void:
+	_check_index = _check_start
+	await board.play_list(_show_list)
+	
+	if _is_timed:
+		_timer.wait_time = _wait_time
+		_timer.start()
+
+
+func _on_timer_timeout() -> void:
+	evaluate_decision(-1)
 #endregion Private Funtions

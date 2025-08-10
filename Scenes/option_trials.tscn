@@ -21,7 +21,7 @@ _icon_on = ExtResource("4_dmfx5")
 _icon_on = ExtResource("5_qw776")
 
 [node name="Up" parent="Labels" index="0"]
-text = "Time"
+text = "Timed"
 
 [node name="Right" parent="Labels" index="1"]
 text = "Double"

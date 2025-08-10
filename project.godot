@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Omnis"
-run/main_scene="uid://cbcdadq02v2ij"
+run/main_scene="uid://bajflmusqmpyk"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/image="uid://dvnn37pr6bbg0"
 config/icon="uid://dt7ikqosp6hd0"
