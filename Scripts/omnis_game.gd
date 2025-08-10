@@ -38,6 +38,7 @@ func _ready() -> void:
 
 #region Public Functions
 func evaluate_decision(selection: int) -> void:
+	_timer.stop()
 	if (_guess_list[_check_index] == selection):
 		_check_index += _check_direction
 	else:
@@ -56,6 +57,8 @@ func evaluate_decision(selection: int) -> void:
 func _init_values():
 	_button_list = Globals.Colors.values()
 	_button_list.pop_back() # remove purple
+	#var btn: OmnisButton = board.get_child(0).get_child(Globals.Colors.PURPLE)
+	#btn.get_child(0).texture = null
 	
 	_mirror_shift = 2 if Globals.get_option("mirror") else 0
 	
@@ -127,8 +130,16 @@ func _restart_round() -> void:
 	if _is_timed:
 		_timer.wait_time = _wait_time
 		_timer.start()
+		print(Time.get_time_string_from_system())
+
+
+func _on_game_paused() -> void:
+	if get_tree().paused:
+		pass
+	get_tree().paused = !get_tree().paused
 
 
 func _on_timer_timeout() -> void:
+	print(Time.get_time_string_from_system())
 	evaluate_decision(-1)
 #endregion Private Funtions

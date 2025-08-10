@@ -42,4 +42,5 @@ wait_time = 3.0
 one_shot = true
 
 [connection signal="decision_made" from="GameBoard" to="." method="evaluate_decision"]
+[connection signal="game_paused" from="GameBoard" to="." method="_on_game_board_game_paused"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
