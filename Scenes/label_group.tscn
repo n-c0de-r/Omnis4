@@ -1,0 +1,234 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8glnvc668tsb"]
+
+[ext_resource type="Script" uid="uid://dacyxok4b4kam" path="res://Scripts/label_group.gd" id="1_0mwim"]
+[ext_resource type="Theme" uid="uid://yoehfgx3aqs4" path="res://etc/main_theme.tres" id="1_qv1c1"]
+
+[node name="Labels" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0mwim")
+
+[node name="Up" type="Label" parent="."]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -410.0
+offset_right = 200.0
+offset_bottom = -310.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(200, 50)
+theme = ExtResource("1_qv1c1")
+text = "NAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="switch" type="Label" parent="Up"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -100.0
+offset_right = 200.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(200, 37.5)
+theme = ExtResource("1_qv1c1")
+text = "etc"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+metadata/on = "on"
+metadata/off = "off"
+
+[node name="Right" type="Label" parent="."]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 330.0
+offset_top = -200.0
+offset_right = 340.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(5, 200)
+theme = ExtResource("1_qv1c1")
+text = "NAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="switch" type="Label" parent="Right"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 45.0
+offset_top = -200.0
+offset_right = 55.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(5, 200)
+theme = ExtResource("1_qv1c1")
+text = "etc"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+metadata/on = "on"
+metadata/off = "off"
+
+[node name="Down" type="Label" parent="."]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 310.0
+offset_right = 200.0
+offset_bottom = 410.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(200, 50)
+theme = ExtResource("1_qv1c1")
+text = "NAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="switch" type="Label" parent="Down"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 25.0
+offset_right = 200.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(200, 37.5)
+theme = ExtResource("1_qv1c1")
+text = "etc"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+metadata/on = "on"
+metadata/off = "off"
+
+[node name="Left" type="Label" parent="."]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -340.0
+offset_top = -200.0
+offset_right = -330.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(5, 200)
+theme = ExtResource("1_qv1c1")
+text = "NAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="switch" type="Label" parent="Left"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -55.0
+offset_top = -200.0
+offset_right = -45.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(5, 200)
+theme = ExtResource("1_qv1c1")
+text = "etc"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+metadata/on = "on"
+metadata/off = "off"
+
+[node name="Middle" type="Label" parent="."]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -102.0
+offset_right = 75.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(75, 75)
+theme = ExtResource("1_qv1c1")
+text = "TEXT"
+horizontal_alignment = 1
+autowrap_mode = 1
+
+[node name="switch" type="Label" parent="Middle"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -48.0
+offset_right = 75.0
+offset_bottom = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(75, 75)
+theme = ExtResource("1_qv1c1")
+text = "off"
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 1
+metadata/on = "on"
+metadata/off = "off"

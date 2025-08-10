@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgailf7aquvw3"]
+
+[ext_resource type="PackedScene" uid="uid://buh4r87tyxn1t" path="res://Scenes/ring_select.tscn" id="1_5e1fj"]
+
+[node name="Options" instance=ExtResource("1_5e1fj")]
+
+[node name="Up" parent="Labels" index="0"]
+text = "Game Values"
+
+[node name="Right" parent="Labels" index="1"]
+text = "Cues"
+
+[node name="Down" parent="Labels" index="2"]
+text = "Sounds"
+
+[node name="Left" parent="Labels" index="3"]
+text = "Symbols"
+
+[node name="Middle" parent="Labels" index="4"]
+text = "go"
+
+[node name="switch" parent="Labels/Middle" index="0"]
+text = "back"

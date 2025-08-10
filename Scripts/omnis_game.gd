@@ -2,150 +2,114 @@ extends Control
 class_name OmnisGame
 
 #region Exports
-@export var board: Control
+@export var board: SelectGame
 #endregion Exports
 
 #region Values
-var button_list: Array[TextureButton]
-var show_list: Array[TextureButton]
-var guess_list: Array[TextureButton]
-var speed: float
-var effect: float
-var button_count: int
+var _button_list: Array
+var _show_list: Array[int]
+var _guess_list: Array[int]
 
-var rounds_played: int = 1
-var check_start: int = 0
-var check_index: int = 0
-var check_direction: int = 1 # 1=normal, -1=reverse
-var spiral_counter: int	= 1 # 1=normal, increases every round
+var _rounds_played: int = 1
+var _check_start: int = 0
+var _check_index: int = 0
+var _check_direction: int = 1 # 1=normal, -1=reverse
+var _spiral_counter: int	= 1 # 1=normal, increases every round
+var _mirror_shift: int	= 0 # 0=normal, 2=mirrors color
 
-var double_counter: int = 1 # 1=normal, 2=doubles each button
-var mirror_shift: int	= 0 # 0=normal, 2=mirrors color
-var is_spiral: bool = false
-var is_flipped: bool = false
-var is_random: bool = false
-var is_rotating: bool = false
+var _is_double: bool = false
+var _is_spiral: bool = false
+var _is_flipped: bool = false
+var _is_random: bool = false
 #endregion Values
 
 #region Built-Ins
 func _ready() -> void:
 	_init_values()
-	_setButtons()
-	_connect_signals()
+	
+	await board.play_intro()
+	_generate_rounds(_rounds_played)
 #endregion Built-Ins
 
 
+#region Public Functions
+func evaluate_decision(selection: int) -> void:
+	if (_guess_list[_check_index] == selection):
+		_check_index += _check_direction
+	else:
+		board.play_list(_show_list)
+		_check_index = _check_start
+	
+	_finish_round()
+#endregion
+
+
 #region Private Funtions
-## Connects a selected board's child buttons to it's current parent object
-func _connect_signals() -> void:
-	for btn: TextureButton in board.color_buttons:
-		btn.game_button_pressed.connect(_evaluate)
-
-
 ## Sets the initial values for the game,
 ## according to the Global settings
 func _init_values():
-	effect = Globals.effect
-	speed = Globals.speed
+	_button_list = Globals.Colors.values()
+	_button_list.pop_back() # remove purple
 	
-	if Globals.mode == Globals.Modes.REVERSE:
+	_mirror_shift = 2 if Globals.get_option("mirror") else 0
+	
+	_is_flipped = Globals.get_option("flip")# | Globals.Modes.HELL
+	_is_random = Globals.get_option("random")# | Globals.Modes.HELL
+	_is_double = Globals.get_option("double")
+	_is_spiral = Globals.get_option("spiral")
+	
+	if not _is_flipped and Globals.get_option("reverse"):
 		_flip_direction()
-	
-	is_flipped = Globals.mode == Globals.Modes.FLIP | Globals.Modes.HELL
-	is_random = Globals.mode == Globals.Modes.RANDOM | Globals.Modes.HELL
-	
-	double_counter = Globals.get_trial_bit(Globals.Trials.DOUBLE)
-	mirror_shift = Globals.get_trial_bit(Globals.Trials.MIRROR)
-	is_spiral = Globals.is_trial_set(Globals.Trials.SPIRAL)
-	is_rotating = Globals.is_trial_set(Globals.Trials.ROTATE)
-
-
-## Sets options for the buttons
-func _setButtons() -> void:
-	button_list = board.color_buttons.duplicate()
-	button_count = button_list.size()
-	for btn: TextureButton in button_list:
-		btn.simulatePress(speed / 4.0, effect)
-		await get_tree().create_timer(speed  / 2.0).timeout
-	
-	_generate_rounds(rounds_played)
 
 
 func _generate_rounds(count: int):
-	var next: TextureButton
-	
+	var color_count: int = _button_list.size()-1
 	for r in count:
 		randomize()
-		# Get next button for replay
-		var index: int = randi_range(0, button_count-1)
-		next = button_list[index]
-		show_list.append(next)
+		var next: int
+		var index: int = randi_range(0, color_count)
+		next = _button_list[index]
+		_show_list.append(next)
 		# Gets shifted button for guessing if needed
-		index += mirror_shift
-		index &= button_count-1
-		next = button_list[index]
-		guess_list.append(next)
+		index += _mirror_shift
+		index &= color_count
+		next = _button_list[index]
+		_guess_list.append(next)
 		
-		# Get amount of additional presses of each button
-		for double in double_counter:
-			guess_list.append(next)
+		if _is_double:
+			_guess_list.append(next)
 	
-	print("show ", show_list)
-	print("guess ", guess_list)
-	# Play the visible list
-	_play_list()
-
-
-func _play_list()-> void:
-	for btn in show_list:
-		btn.simulatePress(speed, effect)
-		await get_tree().create_timer(speed * 2).timeout
-		
-	if (is_rotating):
-		board.rotate()
-	else:
-		board.disable_ring(false)
+	print("show ", _show_list)
+	print("guess ", _guess_list)
+	print("dir ", _check_direction)
 	
-	check_index = check_start
-
-
-func _evaluate(pressed: TextureButton) -> void:
-	if (guess_list[check_index] == pressed):
-		check_index+=check_direction
-		pressed.disabled = false
-	else:
-		_play_list()
-	
-	_finish_round()
+	board.play_list(_show_list)
+	_check_index = _check_start
 
 
 func _finish_round() -> void:
-	if (check_index >= guess_list.size() or check_index < -guess_list.size()):
-		board.disable_ring(true)
+	var _guess_items: int = _guess_list.size()
+	if (_check_index >= _guess_items or _check_index < -_guess_items):
+		_rounds_played += 1
 		
-		# round over
-		rounds_played += 1
-		
-		# Switch directions
-		if (is_flipped):
+		if (_is_flipped):
 			_flip_direction()
 		
-		# Add progressively more to the next round
-		if (is_spiral):
-			spiral_counter += 1
+		if _is_spiral:
+			_spiral_counter += 1
 		
-		if (is_random):
-			show_list.clear()
-			guess_list.clear()
-			_generate_rounds(rounds_played)
+		if (_is_random):
+			_show_list.clear()
+			_guess_list.clear()
+			_generate_rounds(_rounds_played)
 		else:
-			_generate_rounds(spiral_counter)
+			_generate_rounds(_spiral_counter)
 			
-		check_index = check_start
+		_check_index = _check_start
 
 
 func _flip_direction() -> void:
-	check_start -= check_direction
-	check_direction = 0-check_direction
-	check_index = check_start
+	_check_start -= _check_direction
+	_check_direction = 0 - _check_direction
+	_check_index = _check_start
 #endregion Private Funtions

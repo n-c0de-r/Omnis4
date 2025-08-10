@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://cvn3uge02x1vt"]
+
+[ext_resource type="PackedScene" uid="uid://buh4r87tyxn1t" path="res://Scenes/ring_select.tscn" id="1_4cm8u"]
+[ext_resource type="Texture2D" uid="uid://ba1qv0ms67asw" path="res://Videos/icon_game_new.svg" id="2_qtwdh"]
+[ext_resource type="Script" uid="uid://doegkuj4l8gb7" path="res://Scripts/select_start.gd" id="2_y4b1x"]
+[ext_resource type="PackedScene" uid="uid://d1irmmbnqwggj" path="res://Scenes/omnis_game.tscn" id="3_8p0j2"]
+[ext_resource type="Texture2D" uid="uid://cwagrve2o027e" path="res://Videos/icon_modes.svg" id="3_y4b1x"]
+[ext_resource type="Texture2D" uid="uid://cf8fukuumcpwq" path="res://Videos/icon_options.svg" id="4_8p0j2"]
+[ext_resource type="Texture2D" uid="uid://cs2wme8l5vtat" path="res://Videos/icon_trials.svg" id="5_6pg0p"]
+[ext_resource type="Texture2D" uid="uid://c1htlbc7m55ci" path="res://Videos/icon_game_quit.svg" id="6_vvl3b"]
+
+[node name="Start" instance=ExtResource("1_4cm8u")]
+script = ExtResource("2_y4b1x")
+_game_screen = ExtResource("3_8p0j2")
+
+[node name="Up" parent="Buttons" index="0"]
+_icon_off = ExtResource("2_qtwdh")
+
+[node name="Right" parent="Buttons" index="1"]
+_icon_off = ExtResource("3_y4b1x")
+
+[node name="Down" parent="Buttons" index="2"]
+disabled = true
+_icon_off = ExtResource("4_8p0j2")
+
+[node name="Left" parent="Buttons" index="3"]
+_icon_off = ExtResource("5_6pg0p")
+
+[node name="Middle" parent="Buttons" index="4"]
+_icon_off = ExtResource("6_vvl3b")
+
+[node name="Up" parent="Labels" index="0"]
+text = "New Game"
+
+[node name="Right" parent="Labels" index="1"]
+text = "Modes"
+
+[node name="Down" parent="Labels" index="2"]
+text = "Options"
+
+[node name="Left" parent="Labels" index="3"]
+text = "Trials"
+
+[node name="Middle" parent="Labels" index="4"]
+text = "QUIT"
+
+[node name="switch" parent="Labels/Middle" index="0"]
+text = "GAME"

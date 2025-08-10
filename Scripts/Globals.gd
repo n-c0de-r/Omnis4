@@ -1,54 +1,32 @@
 extends Node
 
 #region Enums
-enum Options { BLUE, RED, YELLOW, GREEN, PURPLE }
-enum Modes { REVERSE, FLIP, RANDOM, HELL }
-enum Trials { ROTATE, DOUBLE, MIRROR, SPIRAL }
-enum Cues { COLOR, AUDIO, SYMBOL, SHAKE }
-enum Sounds { ORIGINAL, INSTUMENT, VOICE, ANIMAL }
-enum Symbols { CLEAR, ARROWS, SHAPES, ANIMALS }
+enum Colors { BLUE, RED, YELLOW, GREEN, PURPLE }
 #endregion Enums
 
 
 #region Values
-var speed: float = 1.0
-var effect: float = 0.2
-var mode: int = 0
-var trial: int = 0
-var cue: int = Cues.COLOR
-var sound: int = Sounds.ORIGINAL
-var symbol: int = Symbols.CLEAR
+const BASE_DARKNESS: float = 0.2
+const BASE_SPEED: float = 1
+var settings: Dictionary[String, bool]
 #endregion Values
 
 
 #region Public Functions
-func switch_menu(previous: Control, current: Control):
-	previous.visible = false
-	current.visible = true
-	current.previous_menu = previous
+func get_option(value: String) -> bool:
+	for key: String in settings.keys():
+		if key.containsn(value):
+			return settings[key]
+		
+		var parts = key.split(" ", false, 1)
+		if parts.size() == 2 and parts[1] == value:
+			return settings[value]
+	return false
 
-func set_trial_bit(shift: Trials) -> void:
-	trial |= ~(1 << shift)
-
-
-func get_trial_bit(check: Trials) -> int:
-	return ((trial & (1 << check)) >> 1)
-
-
-func clear_trial_bit(shift: Trials) -> void:
-	trial &= ~(1 << shift)
-
-
-func flip_trial(check: Trials) -> void:
-	trial ^= (1 << check)
-
-
-func get_trial_value(check: Trials) -> int:
-	return (trial & (1 << check))
-
-
-func is_trial_set(check: Trials) -> bool:
-	return !!(trial & (1 << check))
+func get_speed() -> float:
+	if get_option("faster"):
+		return BASE_SPEED /2
+	return BASE_SPEED
 
 
 func save_game() -> void:

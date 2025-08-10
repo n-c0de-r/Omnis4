@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs2wme8l5vtat"
-path="res://.godot/imported/icon_trials.svg-78fd9120642c0da284bac41e1b3e1f5d.ctex"
+uid="uid://pxphf5m5mkl5"
+path="res://.godot/imported/icon_mode_rotate.svg-c8a8ee5c19c0c4c4dcf70d2f3d1fe1d1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Videos/icon_trials.svg"
-dest_files=["res://.godot/imported/icon_trials.svg-78fd9120642c0da284bac41e1b3e1f5d.ctex"]
+source_file="res://Videos/icon_mode_rotate.svg"
+dest_files=["res://.godot/imported/icon_mode_rotate.svg-c8a8ee5c19c0c4c4dcf70d2f3d1fe1d1.ctex"]
 
 [params]
 

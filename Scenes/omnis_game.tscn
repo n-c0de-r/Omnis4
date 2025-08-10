@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dexpfg7vjhx6p" path="res://Scripts/omnis_game.gd" id="1_y0byd"]
 [ext_resource type="Texture2D" uid="uid://ds2kdeoocjwr4" path="res://Videos/omnis_back.png" id="2_iu52v"]
-[ext_resource type="PackedScene" uid="uid://bmoirptkgr7q0" path="res://Scenes/game_ring.tscn" id="3_tqpa8"]
+[ext_resource type="PackedScene" uid="uid://dkfosb8ask52l" path="res://Scenes/select_game.tscn" id="4_iu52v"]
 
 [node name="Game" type="Control" node_paths=PackedStringArray("board")]
 layout_mode = 3
@@ -16,7 +16,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_y0byd")
-board = NodePath("Board")
+board = NodePath("GameBoard")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -33,6 +33,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_iu52v")
 
-[node name="Board" parent="." instance=ExtResource("3_tqpa8")]
+[node name="GameBoard" parent="." instance=ExtResource("4_iu52v")]
 layout_mode = 1
-text_strings = Array[String](["BLUE", "RED", "YELLOW", "GREEN", "Pause"])
+
+[connection signal="decision_made" from="GameBoard" to="." method="evaluate_decision"]

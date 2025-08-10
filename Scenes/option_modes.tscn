@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://bhd7rqc0g58w"]
+
+[ext_resource type="PackedScene" uid="uid://q8f6kuee3typ" path="res://Scenes/ring_option.tscn" id="1_6s5ph"]
+[ext_resource type="Texture2D" uid="uid://dfuv6b0dq6ueo" path="res://Videos/icon_option_off.svg" id="2_t3wn0"]
+[ext_resource type="Texture2D" uid="uid://c7er6wwo8w2av" path="res://Videos/icon_mode_reverse.svg" id="3_f13h1"]
+[ext_resource type="Texture2D" uid="uid://0juooqt47nk2" path="res://Videos/icon_mode_flip.svg" id="4_dnoo3"]
+[ext_resource type="Texture2D" uid="uid://pxphf5m5mkl5" path="res://Videos/icon_mode_rotate.svg" id="5_odf0s"]
+[ext_resource type="Texture2D" uid="uid://1xtbhdbdbou1" path="res://Videos/icon_mode_random.svg" id="6_ifmq7"]
+
+[node name="Modes" instance=ExtResource("1_6s5ph")]
+
+[node name="Up" parent="Buttons" index="0"]
+_icon_off = ExtResource("2_t3wn0")
+_icon_on = ExtResource("3_f13h1")
+
+[node name="Right" parent="Buttons" index="1"]
+_icon_off = ExtResource("2_t3wn0")
+_icon_on = ExtResource("4_dnoo3")
+
+[node name="Down" parent="Buttons" index="2"]
+_icon_off = ExtResource("2_t3wn0")
+_icon_on = ExtResource("5_odf0s")
+
+[node name="Left" parent="Buttons" index="3"]
+_icon_off = ExtResource("2_t3wn0")
+_icon_on = ExtResource("6_ifmq7")
+
+[node name="Up" parent="Labels" index="0"]
+text = "Reverse"
+
+[node name="switch" parent="Labels/Up" index="0"]
+text = "off"
+
+[node name="Right" parent="Labels" index="1"]
+text = "Flip"
+
+[node name="switch" parent="Labels/Right" index="0"]
+text = "off"
+
+[node name="Down" parent="Labels" index="2"]
+text = "Rotate"
+
+[node name="switch" parent="Labels/Down" index="0"]
+text = "off"
+
+[node name="Left" parent="Labels" index="3"]
+text = "Random"
+
+[node name="switch" parent="Labels/Left" index="0"]
+text = "off"
+
+[node name="Middle" parent="Labels" index="4"]
+text = "go"
+
+[node name="switch" parent="Labels/Middle" index="0"]
+text = "back"
