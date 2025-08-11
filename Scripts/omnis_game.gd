@@ -13,12 +13,12 @@ var _guess_list: Array[int]
 
 const BASE_TIMEOUT: float = 3.0
 var _wait_time: float
-var _rounds_played: int = 1
-var _check_start: int = 0
-var _check_index: int = 0
-var _check_direction: int = 1 # 1=normal, -1=reverse
-var _spiral_counter: int	= 1 # 1=normal, increases every round
-var _mirror_shift: int	= 0 # 0=normal, 2=mirrors color
+var _rounds_played: int
+var _check_start: int
+var _check_index: int
+var _check_direction: int # 1=normal, -1=reverse
+var _mirror_shift: int # 0=normal, 2=mirrors color
+var _color_mod: int # for bitwise modulo
 
 var _is_flipped: bool = false
 var _is_random: bool = false
@@ -30,9 +30,8 @@ var _is_spiral: bool = false
 #region Built-Ins
 func _ready() -> void:
 	_init_values()
-	
 	await board.play_intro()
-	_generate_rounds(_rounds_played)
+	_generate_rounds(1)
 #endregion Built-Ins
 
 
@@ -57,11 +56,10 @@ func evaluate_decision(selection: int) -> void:
 func _init_values():
 	_button_list = Globals.Colors.values()
 	_button_list.pop_back() # remove purple
-	#var btn: OmnisButton = board.get_child(0).get_child(Globals.Colors.PURPLE)
-	#btn.get_child(0).texture = null
 	
+	_color_mod = _button_list.size()-1
+	_check_direction = 1
 	_mirror_shift = 2 if Globals.get_option("mirror") else 0
-	
 	_wait_time = BASE_TIMEOUT * Globals.get_speed()
 	
 	_is_flipped = Globals.get_option("flip")
@@ -75,16 +73,15 @@ func _init_values():
 
 
 func _generate_rounds(count: int):
-	var color_count: int = _button_list.size()-1
 	for r in count:
 		randomize()
 		var next: int
-		var index: int = randi_range(0, color_count)
+		var index: int = randi_range(0, _color_mod)
 		next = _button_list[index]
 		_show_list.append(next)
 		# Gets shifted button for guessing if needed
 		index += _mirror_shift
-		index &= color_count
+		index &= _color_mod
 		next = _button_list[index]
 		_guess_list.append(next)
 		
@@ -94,26 +91,26 @@ func _generate_rounds(count: int):
 	print("show ", _show_list)
 	print("guess ", _guess_list)
 	print("dir ", _check_direction)
-	
 	_restart_round()
 
 
 func _finish_round() -> void:
-	_rounds_played += 1
-	
 	if (_is_flipped):
 		_flip_direction()
 	
+	var amount = 1
+	
 	if _is_spiral:
-		_spiral_counter += 1
+		amount += _rounds_played
 	
 	if (_is_random):
+		amount += _show_list.size()
 		_show_list.clear()
 		_guess_list.clear()
-		_generate_rounds(_rounds_played)
-	else:
-		_generate_rounds(_spiral_counter)
+	
+	_generate_rounds(amount)
 		
+	_rounds_played += 1
 	_check_index = _check_start
 
 
