@@ -21,7 +21,7 @@ var _mirror_shift: int # 0=normal, 2=mirrors color
 var _color_mod: int # for bitwise modulo
 
 var _is_flipped: bool = false
-var _is_random: bool = false
+var _is_chaos: bool = false
 var _is_timed: bool = false
 var _is_double: bool = false
 var _is_spiral: bool = false
@@ -31,12 +31,12 @@ var _is_spiral: bool = false
 func _ready() -> void:
 	_init_values()
 	await board.play_intro()
-	_generate_rounds(1)
+	_generate_rounds()
 #endregion Built-Ins
 
 
 #region Public Functions
-func evaluate_decision(selection: int) -> void:
+func evaluate_decision(selection: int = -1) -> void:
 	_timer.stop()
 	if (_guess_list[_check_index] == selection):
 		_check_index += _check_direction
@@ -63,7 +63,7 @@ func _init_values():
 	_wait_time = BASE_TIMEOUT * Globals.get_speed()
 	
 	_is_flipped = Globals.get_option("flip")
-	_is_random = Globals.get_option("random")
+	_is_chaos = Globals.get_option("chaos")
 	_is_timed = Globals.get_option("timed")
 	_is_double = Globals.get_option("double")
 	_is_spiral = Globals.get_option("spiral")
@@ -72,7 +72,7 @@ func _init_values():
 		_flip_direction()
 
 
-func _generate_rounds(count: int):
+func _generate_rounds(count: int = 1):
 	for r in count:
 		randomize()
 		var next: int
@@ -103,7 +103,7 @@ func _finish_round() -> void:
 	if _is_spiral:
 		amount += _rounds_played
 	
-	if (_is_random):
+	if (_is_chaos):
 		amount += _show_list.size()
 		_show_list.clear()
 		_guess_list.clear()
@@ -127,7 +127,6 @@ func _restart_round() -> void:
 	if _is_timed:
 		_timer.wait_time = _wait_time
 		_timer.start()
-		print(Time.get_time_string_from_system())
 
 
 func _on_game_paused() -> void:
@@ -137,6 +136,5 @@ func _on_game_paused() -> void:
 
 
 func _on_timer_timeout() -> void:
-	print(Time.get_time_string_from_system())
-	evaluate_decision(-1)
+	evaluate_decision()
 #endregion Private Funtions

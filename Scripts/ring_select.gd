@@ -14,12 +14,14 @@ extends Control
 
 #region Exports
 @export var _options: Array[RingSelect]
+@export var _sounds: Array[AudioStreamOggVorbis]
 #endregion
 
 
 #region Values
 @onready var _buttons: Control = $Buttons
 @onready var _labels: LabelGroup = $Labels
+@onready var _player: AudioStreamPlayer = $Player
 var previous_menu: RingSelect
 var _option_buttons: Array[OmnisButton]
 #endregion
@@ -41,6 +43,7 @@ func _on_option_picked(option: int, _state: bool):
 		Globals.Colors.PURPLE:
 			_switch_menu(self, previous_menu)
 		_:
+			_play_sound(option)
 			Globals.switch_menu(self, _options[option])
 
 
@@ -54,4 +57,9 @@ func _switch_menu(current: Control, next: Control):
 func _connect_signals() -> void:
 	for btn: OmnisButton in _buttons.get_children():
 		btn.option_picked.connect(_on_option_picked)
+
+func _play_sound(tone: int):
+	_player.stop()
+	_player.stream = _sounds[tone]
+	_player.play()
 #endregion

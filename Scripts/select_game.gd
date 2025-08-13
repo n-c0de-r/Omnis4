@@ -21,14 +21,14 @@ signal game_paused()
 #region Values
 const ROTATE_DEGREES:int = 90
 var _mirror_shift: int	= 0 # 0=normal, 2=mirrors color
-var _is_rotating: bool
+var _is_spinning: bool
 #endregion
 
 
 #region Built-Ins
 func _ready() -> void:
 	super()
-	_is_rotating = Globals.get_option("rotate")
+	_is_spinning = Globals.get_option("spin")
 	_mirror_shift = 2 if Globals.get_option("mirror") else 0
 #endregion
 
@@ -43,11 +43,11 @@ func play_list(list: Array[int]) -> void:
 		var btn: OmnisButton = _buttons.get_child(index)
 		await btn.simulate_press(speed)
 		
-	if _is_rotating:
+	if _is_spinning:
 		# Generates a -1 or +1 bitwise
 		var direction: int = (randi_range(0, 1) << 1) - 1
 		var times: int = randi_range(1, 3)
-		await _rotate_buttons(ROTATE_DEGREES, direction, times, speed)
+		await _spin_buttons(ROTATE_DEGREES, direction, times, speed)
 	await get_tree().create_timer(speed).timeout
 
 	_switch_buttons(true)
@@ -73,7 +73,7 @@ func _on_option_picked(option: int, _state: bool):
 
 
 ## Rotates the game ring by random 90 degrees
-func _rotate_buttons(degrees: int, direction: int, times: int, speed: float) -> void:
+func _spin_buttons(degrees: int, direction: int, times: int, speed: float) -> void:
 	for n in times:
 		var tweens: Array[Tween]
 		for index in Globals.Colors.PURPLE:

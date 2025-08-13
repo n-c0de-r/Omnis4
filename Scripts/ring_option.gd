@@ -34,6 +34,7 @@ func _on_option_picked(option: int, state: bool):
 		Globals.Colors.PURPLE:
 			_switch_menu(self, previous_menu)
 		_:
+			_play_sound(option)
 			var key: String = self.name + " " + _labels.get_key(option)
 			Globals.settings[key] = state
 			_labels.set_switch(option, state)

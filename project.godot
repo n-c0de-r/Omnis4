@@ -32,10 +32,11 @@ window/handheld/orientation=4
 folder_colors={
 "res://Audios/": "red",
 "res://Files/": "pink",
+"res://Resources/": "gray",
 "res://Scenes/": "green",
 "res://Scripts/": "blue",
-"res://Videos/": "purple",
-"res://etc/": "gray"
+"res://Texts/": "yellow",
+"res://Videos/": "purple"
 }
 
 [rendering]

@@ -1,10 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://buh4r87tyxn1t"]
+[gd_scene load_steps=14 format=3 uid="uid://buh4r87tyxn1t"]
 
 [ext_resource type="Script" uid="uid://dkr6427c6b73e" path="res://Scripts/ring_select.gd" id="1_mpriq"]
+[ext_resource type="AudioStream" uid="uid://csjk3un28bcnd" path="res://Audios/tone_e.ogg" id="2_2ok1q"]
 [ext_resource type="PackedScene" uid="uid://cgdr7gnp3no3c" path="res://Scenes/button_options.tscn" id="2_xj0ph"]
-[ext_resource type="PackedScene" uid="uid://c2jcts8rn4dti" path="res://Scenes/button_middle.tscn" id="3_3lwdq"]
+[ext_resource type="AudioStream" uid="uid://c0hjwkim4lo3s" path="res://Audios/tone_csharp.ogg" id="3_73amb"]
+[ext_resource type="PackedScene" uid="uid://bqcfrbbc1mao" path="res://Scenes/button_middle.tscn" id="3_nvd6g"]
+[ext_resource type="AudioStream" uid="uid://b1812ghal1nxm" path="res://Audios/tone_a.ogg" id="4_15mgn"]
 [ext_resource type="Script" uid="uid://dacyxok4b4kam" path="res://Scripts/label_group.gd" id="4_nvd6g"]
-[ext_resource type="Theme" uid="uid://yoehfgx3aqs4" path="res://etc/main_theme.tres" id="4_xj0ph"]
+[ext_resource type="Theme" uid="uid://yoehfgx3aqs4" path="res://Resources/main_theme.tres" id="4_xj0ph"]
+[ext_resource type="AudioStream" uid="uid://bdvv7ycmwhp0x" path="res://Audios/tone_elow.ogg" id="5_vk4km"]
+[ext_resource type="Texture2D" uid="uid://grmn3voap4yx" path="res://Videos/shapes_circles.svg" id="7_151yh"]
+[ext_resource type="Texture2D" uid="uid://c7u6ei3tfys13" path="res://Videos/shapes_triangles.svg" id="8_y0rep"]
+[ext_resource type="Texture2D" uid="uid://ca642d2s1kbbh" path="res://Videos/shapes_squares.svg" id="9_wfiou"]
+[ext_resource type="Texture2D" uid="uid://cf4r1rd6xfb83" path="res://Videos/shapes_stars.svg" id="10_xshsl"]
 
 [node name="RingSelect" type="Control"]
 layout_mode = 3
@@ -19,6 +27,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.8, 0.8)
 script = ExtResource("1_mpriq")
+_sounds = Array[AudioStreamOggVorbis]([ExtResource("2_2ok1q"), ExtResource("3_73amb"), ExtResource("4_15mgn"), ExtResource("5_vk4km"), null])
 
 [node name="Buttons" type="Control" parent="."]
 layout_mode = 1
@@ -36,6 +45,7 @@ layout_mode = 1
 offset_top = -310.0
 offset_bottom = -110.0
 _icon_color = Color(0.86, 0.86, 0.3096, 1)
+_shape_texture = ExtResource("7_151yh")
 
 [node name="Right" parent="Buttons" instance=ExtResource("2_xj0ph")]
 self_modulate = Color(0.862745, 0.0980392, 0.0980392, 1)
@@ -43,8 +53,9 @@ layout_mode = 1
 offset_top = -310.0
 offset_bottom = -110.0
 rotation = 1.5708
-_icon_color = Color(0.3096, 0.86, 0.3096, 1)
 _option = 1
+_icon_color = Color(0.3096, 0.86, 0.3096, 1)
+_shape_texture = ExtResource("8_y0rep")
 
 [node name="Down" parent="Buttons" instance=ExtResource("2_xj0ph")]
 self_modulate = Color(0.862745, 0.862745, 0.0980392, 1)
@@ -52,8 +63,9 @@ layout_mode = 1
 offset_top = -310.0
 offset_bottom = -110.0
 rotation = 3.14159
-_icon_color = Color(0.3096, 0.3096, 0.86, 1)
 _option = 2
+_icon_color = Color(0.3096, 0.3096, 0.86, 1)
+_shape_texture = ExtResource("9_wfiou")
 
 [node name="Left" parent="Buttons" instance=ExtResource("2_xj0ph")]
 self_modulate = Color(0.0980392, 0.862745, 0.0980392, 1)
@@ -61,14 +73,16 @@ layout_mode = 1
 offset_top = -310.0
 offset_bottom = -110.0
 rotation = 4.71239
-_icon_color = Color(0.86, 0.3096, 0.3096, 1)
 _option = 3
+_icon_color = Color(0.86, 0.3096, 0.3096, 1)
+_shape_texture = ExtResource("10_xshsl")
 
-[node name="Middle" parent="Buttons" instance=ExtResource("3_3lwdq")]
+[node name="Middle" parent="Buttons" instance=ExtResource("3_nvd6g")]
 self_modulate = Color(0.862745, 0.0980392, 0.862745, 1)
+clip_contents = false
 layout_mode = 1
-_icon_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
-_option = 4
+pivot_offset = Vector2(203.5, 310)
+toggle_mode = false
 
 [node name="Labels" type="Control" parent="."]
 layout_mode = 1
@@ -303,3 +317,6 @@ vertical_alignment = 2
 autowrap_mode = 1
 metadata/on = "on"
 metadata/off = "off"
+
+[node name="Player" type="AudioStreamPlayer" parent="."]
+volume_db = -80.0

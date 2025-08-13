@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b8glnvc668tsb"]
 
 [ext_resource type="Script" uid="uid://dacyxok4b4kam" path="res://Scripts/label_group.gd" id="1_0mwim"]
-[ext_resource type="Theme" uid="uid://yoehfgx3aqs4" path="res://etc/main_theme.tres" id="1_qv1c1"]
+[ext_resource type="Theme" uid="uid://yoehfgx3aqs4" path="res://Resources/main_theme.tres" id="1_qv1c1"]
 
 [node name="Labels" type="Control"]
 layout_mode = 3

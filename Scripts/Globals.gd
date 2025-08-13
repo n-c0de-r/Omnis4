@@ -2,6 +2,7 @@ extends Node
 
 #region Enums
 enum Colors { BLUE, RED, YELLOW, GREEN, PURPLE }
+#enum Cues { COLOR, AUDIO, SHAKE, HINTS }
 #endregion Enums
 
 
@@ -24,8 +25,8 @@ func get_option(value: String) -> bool:
 	return false
 
 func get_speed() -> float:
-	if get_option("faster"):
-		return BASE_SPEED /2
+	if get_option("slower"):
+		return BASE_SPEED * 2
 	return BASE_SPEED
 
 

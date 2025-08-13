@@ -1,12 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://pitsn0qdyc6a"]
+[gd_scene load_steps=10 format=3 uid="uid://pitsn0qdyc6a"]
 
 [ext_resource type="PackedScene" uid="uid://q8f6kuee3typ" path="res://Scenes/ring_option.tscn" id="1_otjaq"]
+[ext_resource type="AudioStream" uid="uid://csjk3un28bcnd" path="res://Audios/tone_e.ogg" id="2_qw776"]
 [ext_resource type="Texture2D" uid="uid://dcwtsth6fb0lx" path="res://Videos/icon_trial_time.svg" id="2_ts0k0"]
+[ext_resource type="AudioStream" uid="uid://c0hjwkim4lo3s" path="res://Audios/tone_csharp.ogg" id="3_6vn8y"]
 [ext_resource type="Texture2D" uid="uid://db2vf1f0tabh3" path="res://Videos/icon_trial_double.svg" id="3_m4agw"]
 [ext_resource type="Texture2D" uid="uid://c6j6j1vrdh2" path="res://Videos/icon_trial_mirror.svg" id="4_dmfx5"]
+[ext_resource type="AudioStream" uid="uid://b1812ghal1nxm" path="res://Audios/tone_a.ogg" id="4_ojl5h"]
+[ext_resource type="AudioStream" uid="uid://bdvv7ycmwhp0x" path="res://Audios/tone_elow.ogg" id="5_5su2w"]
 [ext_resource type="Texture2D" uid="uid://c5ysp8aiq8j1r" path="res://Videos/icon_trial_spiral.svg" id="5_qw776"]
 
 [node name="Trials" instance=ExtResource("1_otjaq")]
+_sounds = Array[AudioStreamOggVorbis]([ExtResource("2_qw776"), ExtResource("3_6vn8y"), ExtResource("4_ojl5h"), ExtResource("5_5su2w")])
 
 [node name="Up" parent="Buttons" index="0"]
 _icon_on = ExtResource("2_ts0k0")
@@ -31,3 +36,6 @@ text = "Mirror"
 
 [node name="Left" parent="Labels" index="3"]
 text = "Spiral"
+
+[node name="Player" parent="." index="2"]
+volume_db = 0.0
