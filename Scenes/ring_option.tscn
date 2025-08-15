@@ -6,6 +6,21 @@
 [node name="RingOption" instance=ExtResource("1_72u7x")]
 script = ExtResource("1_3k4l0")
 
+[node name="Up" parent="Buttons" index="0"]
+toggle_mode = true
+
+[node name="Right" parent="Buttons" index="1"]
+toggle_mode = true
+
+[node name="Down" parent="Buttons" index="2"]
+toggle_mode = true
+
+[node name="Left" parent="Buttons" index="3"]
+toggle_mode = true
+
+[node name="Middle" parent="Buttons" index="4"]
+toggle_mode = true
+
 [node name="switch" parent="Labels/Up" index="0"]
 visible = true
 
