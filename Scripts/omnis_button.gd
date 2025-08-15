@@ -68,16 +68,11 @@ func _on_button_down() -> void:
 	_shape.self_modulate = _shape_color.darkened(0.2)
 
 
-func _on_button_up() -> void:
-	if toggle_mode:
-		return
-	_shape.self_modulate = _shape_color.darkened(0.5)
-
-
 func _on_pressed() -> void:
 	if toggle_mode:
 		return
 	_icon.self_modulate = _icon_color
+	_shape.self_modulate = _shape_color.darkened(0.5)
 	emit_signal(option_picked.get_name(), _option, true)
 
 

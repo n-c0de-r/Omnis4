@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dmoxm2h6by41h" path="res://Scripts/select_game.gd" id="2_4yetl"]
 
 [node name="GameBoard" instance=ExtResource("1_ne6bh")]
+process_mode = 1
 script = ExtResource("2_4yetl")
 
 [node name="Middle" parent="Buttons" index="4"]

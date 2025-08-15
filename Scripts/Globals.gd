@@ -6,6 +6,11 @@ enum Colors { BLUE, RED, YELLOW, GREEN, PURPLE }
 #endregion Enums
 
 
+#region Exports
+
+#endregion
+
+
 #region Values
 const BASE_DARKNESS: float = 0.2
 const BASE_SPEED: float = 1

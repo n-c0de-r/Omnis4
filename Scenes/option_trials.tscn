@@ -14,15 +14,19 @@
 _sounds = Array[AudioStreamOggVorbis]([ExtResource("2_qw776"), ExtResource("3_6vn8y"), ExtResource("4_ojl5h"), ExtResource("5_5su2w")])
 
 [node name="Up" parent="Buttons" index="0"]
+toggle_mode = true
 _icon_on = ExtResource("2_ts0k0")
 
 [node name="Right" parent="Buttons" index="1"]
+toggle_mode = true
 _icon_on = ExtResource("3_m4agw")
 
 [node name="Down" parent="Buttons" index="2"]
+toggle_mode = true
 _icon_on = ExtResource("4_dmfx5")
 
 [node name="Left" parent="Buttons" index="3"]
+toggle_mode = true
 _icon_on = ExtResource("5_qw776")
 
 [node name="Up" parent="Labels" index="0"]

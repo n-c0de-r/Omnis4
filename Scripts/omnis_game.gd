@@ -2,7 +2,8 @@ extends Control
 class_name OmnisGame
 
 #region Exports
-@export var board: SelectGame
+@export var _board: SelectGame
+@export var _pause_menu: RingSelect
 @export var _timer: Timer
 #endregion Exports
 
@@ -30,7 +31,7 @@ var _is_spiral: bool = false
 #region Built-Ins
 func _ready() -> void:
 	_init_values()
-	await board.play_intro()
+	await _board.play_intro()
 	_generate_rounds()
 #endregion Built-Ins
 
@@ -54,6 +55,9 @@ func evaluate_decision(selection: int = -1) -> void:
 ## Sets the initial values for the game,
 ## according to the Global settings
 func _init_values():
+	_show_list.clear()
+	_guess_list.clear()
+	
 	_button_list = Globals.Colors.values()
 	_button_list.pop_back() # remove purple
 	
@@ -122,7 +126,7 @@ func _flip_direction() -> void:
 
 func _restart_round() -> void:
 	_check_index = _check_start
-	await board.play_list(_show_list)
+	await _board.play_list(_show_list)
 	
 	if _is_timed:
 		_timer.wait_time = _wait_time
@@ -130,9 +134,20 @@ func _restart_round() -> void:
 
 
 func _on_game_paused() -> void:
-	if get_tree().paused:
-		pass
-	get_tree().paused = !get_tree().paused
+	get_tree().paused = true
+	_board.visible = false
+	_pause_menu.visible = true
+
+
+func _on_restart_game() -> void:
+	_on_resume_game()
+	_ready()
+
+
+func _on_resume_game() -> void:
+	get_tree().paused = false
+	_board.visible = true
+	_pause_menu.visible = false
 
 
 func _on_timer_timeout() -> void:

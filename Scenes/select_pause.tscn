@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://dm1j0p7dkxnyj"]
+
+[ext_resource type="PackedScene" uid="uid://buh4r87tyxn1t" path="res://Scenes/ring_select.tscn" id="1_r7n30"]
+[ext_resource type="Script" uid="uid://6fmpp52fq5m5" path="res://Scripts/select_pause.gd" id="2_66mb0"]
+[ext_resource type="Texture2D" uid="uid://c7er6wwo8w2av" path="res://Videos/icon_mode_reverse.svg" id="4_vi3gn"]
+[ext_resource type="Texture2D" uid="uid://c1htlbc7m55ci" path="res://Videos/icon_game_quit.svg" id="5_hkouv"]
+[ext_resource type="Texture2D" uid="uid://cf8fukuumcpwq" path="res://Videos/icon_options.svg" id="6_fhysw"]
+[ext_resource type="Texture2D" uid="uid://dwcbmcnew11o1" path="res://Videos/icon_back.svg" id="7_i0e67"]
+
+[node name="PauseMenu" instance=ExtResource("1_r7n30")]
+process_mode = 2
+script = ExtResource("2_66mb0")
+_sounds = Array[AudioStreamOggVorbis]([])
+
+[node name="Up" parent="Buttons" index="0"]
+_icon_off = ExtResource("4_vi3gn")
+
+[node name="Right" parent="Buttons" index="1"]
+_icon_off = ExtResource("5_hkouv")
+
+[node name="Down" parent="Buttons" index="2"]
+_icon_off = ExtResource("6_fhysw")
+
+[node name="Left" parent="Buttons" index="3"]
+_icon_off = ExtResource("7_i0e67")
+
+[node name="Middle" parent="Buttons" index="4"]
+_icon_off = null
+
+[node name="Up" parent="Labels" index="0"]
+text = "Restart"
+
+[node name="Right" parent="Labels" index="1"]
+text = "Quit"
+
+[node name="Down" parent="Labels" index="2"]
+text = "Options"
+
+[node name="Left" parent="Labels" index="3"]
+text = "Continue"
+
+[node name="Middle" parent="Labels" index="4"]
+text = "game"
+
+[node name="switch" parent="Labels/Middle" index="0"]
+text = "paused"
+
+[connection signal="button_up" from="Buttons/Middle" to="Buttons/Middle" method="_on_button_up"]
