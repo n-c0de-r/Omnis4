@@ -141,7 +141,7 @@ func _on_game_paused() -> void:
 
 func _on_restart_game() -> void:
 	_on_resume_game()
-	_ready()
+	get_tree().reload_current_scene()
 
 
 func _on_resume_game() -> void:

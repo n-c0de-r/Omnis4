@@ -7,8 +7,21 @@
 process_mode = 1
 script = ExtResource("2_4yetl")
 
+[node name="Up" parent="Buttons" index="0"]
+_icon_off = null
+
+[node name="Right" parent="Buttons" index="1"]
+_icon_off = null
+
+[node name="Down" parent="Buttons" index="2"]
+_icon_off = null
+
+[node name="Left" parent="Buttons" index="3"]
+_icon_off = null
+
 [node name="Middle" parent="Buttons" index="4"]
 disabled = true
+_icon_off = null
 
 [node name="Up" parent="Labels" index="0"]
 text = "Blue"

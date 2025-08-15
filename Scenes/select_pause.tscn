@@ -19,6 +19,7 @@ _icon_off = ExtResource("4_vi3gn")
 _icon_off = ExtResource("5_hkouv")
 
 [node name="Down" parent="Buttons" index="2"]
+disabled = true
 _icon_off = ExtResource("6_fhysw")
 
 [node name="Left" parent="Buttons" index="3"]
