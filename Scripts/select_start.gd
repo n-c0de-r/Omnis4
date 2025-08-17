@@ -31,9 +31,9 @@ extends RingSelect
 
 #region Private Functions
 func _on_option_picked(option: int, _state: bool):
-	_play_sound(option)
 	match(option):
 		Globals.Colors.BLUE:
+			await get_tree().create_timer(Globals.BASE_SPEED).timeout
 			get_tree().change_scene_to_packed(_game_screen)
 		Globals.Colors.RED:
 			_switch_menu(self, _options[option])

@@ -38,7 +38,8 @@ func play_list(list: Array[int]) -> void:
 	_switch_buttons(false)
 	
 	var speed: float = Globals.get_speed()
-	
+	await get_tree().create_timer(speed / 2.0).timeout
+
 	for index in list:
 		var btn: OmnisButton = _buttons.get_child(index)
 		await btn.simulate_press(speed)
@@ -56,8 +57,8 @@ func play_list(list: Array[int]) -> void:
 func play_intro() -> void:
 	_switch_buttons(false)
 	var speed: float = Globals.get_speed() / 4
-	for index in 5:
-		var btn: OmnisButton = _buttons.get_child(index)
+	for btn: OmnisButton in _buttons.get_children():
+		await get_tree().create_timer(speed/2).timeout
 		await btn.simulate_press(speed)
 	await get_tree().create_timer(speed).timeout
 #endregion
@@ -88,4 +89,5 @@ func _spin_buttons(degrees: int, direction: int, times: int, speed: float) -> vo
 func _switch_buttons(state: bool):
 	for btn: OmnisButton in _buttons.get_children():
 		btn.switch_state(state)
+		btn._stop_sound()
 #endregion

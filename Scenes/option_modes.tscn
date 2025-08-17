@@ -1,17 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://bhd7rqc0g58w"]
+[gd_scene load_steps=6 format=3 uid="uid://bhd7rqc0g58w"]
 
 [ext_resource type="PackedScene" uid="uid://q8f6kuee3typ" path="res://Scenes/ring_option.tscn" id="1_6s5ph"]
-[ext_resource type="AudioStream" uid="uid://csjk3un28bcnd" path="res://Audios/tone_e.ogg" id="2_odf0s"]
 [ext_resource type="Texture2D" uid="uid://c7er6wwo8w2av" path="res://Videos/icon_mode_reverse.svg" id="3_f13h1"]
-[ext_resource type="AudioStream" uid="uid://c0hjwkim4lo3s" path="res://Audios/tone_csharp.ogg" id="3_ifmq7"]
 [ext_resource type="Texture2D" uid="uid://0juooqt47nk2" path="res://Videos/icon_mode_flip.svg" id="4_dnoo3"]
-[ext_resource type="AudioStream" uid="uid://b1812ghal1nxm" path="res://Audios/tone_a.ogg" id="4_hjbmg"]
-[ext_resource type="AudioStream" uid="uid://bdvv7ycmwhp0x" path="res://Audios/tone_elow.ogg" id="5_knmm8"]
 [ext_resource type="Texture2D" uid="uid://pxphf5m5mkl5" path="res://Videos/icon_mode_rotate.svg" id="5_odf0s"]
 [ext_resource type="Texture2D" uid="uid://1xtbhdbdbou1" path="res://Videos/icon_mode_random.svg" id="6_ifmq7"]
 
 [node name="Modes" instance=ExtResource("1_6s5ph")]
-_sounds = Array[AudioStreamOggVorbis]([ExtResource("2_odf0s"), ExtResource("3_ifmq7"), ExtResource("4_hjbmg"), ExtResource("5_knmm8")])
 
 [node name="Up" parent="Buttons" index="0"]
 _icon_on = ExtResource("3_f13h1")

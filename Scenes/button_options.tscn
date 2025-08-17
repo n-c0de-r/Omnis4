@@ -75,6 +75,12 @@ pivot_offset = Vector2(50, 50)
 mouse_filter = 2
 texture = ExtResource("5_37xkv")
 
+[node name="Player" type="AudioStreamPlayer" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="button_down" from="." to="." method="_on_button_down"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]
 [connection signal="toggled" from="." to="." method="_on_toggled"]
+[connection signal="timeout" from="Timer" to="." method="_stop_sound"]

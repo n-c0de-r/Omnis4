@@ -18,9 +18,6 @@ toggle_mode = true
 [node name="Left" parent="Buttons" index="3"]
 toggle_mode = true
 
-[node name="Middle" parent="Buttons" index="4"]
-toggle_mode = true
-
 [node name="switch" parent="Labels/Up" index="0"]
 visible = true
 

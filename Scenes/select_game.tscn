@@ -24,15 +24,19 @@ disabled = true
 _icon_off = null
 
 [node name="Up" parent="Labels" index="0"]
+visible = false
 text = "Blue"
 
 [node name="Right" parent="Labels" index="1"]
+visible = false
 text = "Red"
 
 [node name="Down" parent="Labels" index="2"]
+visible = false
 text = "Yellow"
 
 [node name="Left" parent="Labels" index="3"]
+visible = false
 text = "Green"
 
 [node name="Middle" parent="Labels" index="4"]

@@ -1,14 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bajflmusqmpyk"]
+[gd_scene load_steps=6 format=3 uid="uid://bajflmusqmpyk"]
 
 [ext_resource type="Texture2D" uid="uid://ds2kdeoocjwr4" path="res://Videos/omnis_back.png" id="1_0afbu"]
 [ext_resource type="PackedScene" uid="uid://cvn3uge02x1vt" path="res://Scenes/select_start.tscn" id="2_wqnqk"]
 [ext_resource type="PackedScene" uid="uid://bhd7rqc0g58w" path="res://Scenes/option_modes.tscn" id="3_qv56o"]
-[ext_resource type="AudioStream" uid="uid://csjk3un28bcnd" path="res://Audios/tone_e.ogg" id="3_ywii5"]
 [ext_resource type="PackedScene" uid="uid://dgailf7aquvw3" path="res://Scenes/select_options.tscn" id="4_bhbgu"]
-[ext_resource type="AudioStream" uid="uid://c0hjwkim4lo3s" path="res://Audios/tone_csharp.ogg" id="4_w8txl"]
 [ext_resource type="PackedScene" uid="uid://pitsn0qdyc6a" path="res://Scenes/option_trials.tscn" id="5_0afbu"]
-[ext_resource type="AudioStream" uid="uid://b1812ghal1nxm" path="res://Audios/tone_a.ogg" id="5_hf67o"]
-[ext_resource type="AudioStream" uid="uid://bdvv7ycmwhp0x" path="res://Audios/tone_elow.ogg" id="6_4tofk"]
 
 [node name="Title" type="Control"]
 layout_mode = 3
@@ -41,7 +37,6 @@ grow_vertical = 2
 [node name="Start" parent="StartGroup" node_paths=PackedStringArray("_options") instance=ExtResource("2_wqnqk")]
 layout_mode = 1
 _options = [null, NodePath("../Modes"), NodePath("../Options"), NodePath("../Trials")]
-_sounds = Array[AudioStreamOggVorbis]([ExtResource("3_ywii5"), ExtResource("4_w8txl"), ExtResource("5_hf67o"), ExtResource("6_4tofk")])
 
 [node name="Modes" parent="StartGroup" instance=ExtResource("3_qv56o")]
 visible = false
@@ -50,7 +45,6 @@ layout_mode = 1
 [node name="Options" parent="StartGroup" instance=ExtResource("4_bhbgu")]
 visible = false
 layout_mode = 1
-_sounds = Array[AudioStreamOggVorbis]([ExtResource("3_ywii5"), ExtResource("4_w8txl"), ExtResource("5_hf67o"), ExtResource("6_4tofk")])
 
 [node name="Trials" parent="StartGroup" instance=ExtResource("5_0afbu")]
 visible = false

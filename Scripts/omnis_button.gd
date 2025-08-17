@@ -25,6 +25,8 @@ signal option_picked(option: int, state: bool)
 #region Values
 @onready var _icon: TextureRect = $Icon
 @onready var _shape: TextureRect = $Mask/Shape
+@onready var _player: AudioStreamPlayer = $Player
+@onready var _timer: Timer = $Timer
 var _icon_dark: Color
 var _shape_color: Color
 #endregion
@@ -38,10 +40,15 @@ func _ready() -> void:
 	_shape.texture = _shape_texture
 	_shape_color = self_modulate
 	_shape.self_modulate = self_modulate
+	_timer.wait_time = Globals.get_speed()
 #endregion
 
 
 #region Public Functions
+func set_sound(sound: AudioStreamOggVorbis):
+	_player.stream = sound
+
+
 func switch_state(state: bool) -> void:
 	disabled = not state
 	_icon.self_modulate = _icon_color if state else _icon_dark
@@ -54,6 +61,7 @@ func simulate_press(speed: float) -> void:
 	texture_disabled = texture_pressed
 	_icon.self_modulate = _icon_color
 	_shape.self_modulate = _shape_color.darkened(0.2)
+	await _play_sound()
 	await get_tree().create_timer(speed).timeout
 	texture_disabled = temp
 	_icon.self_modulate = _icon_dark
@@ -74,6 +82,7 @@ func _on_pressed() -> void:
 	_icon.self_modulate = _icon_color
 	_shape.self_modulate = _shape_color.darkened(0.5)
 	emit_signal(option_picked.get_name(), _option, true)
+	await _play_sound()
 
 
 func _on_toggled(toggled_on: bool) -> void:
@@ -81,10 +90,21 @@ func _on_toggled(toggled_on: bool) -> void:
 		_icon.self_modulate = _icon_color
 		_icon.texture = _icon_on
 		_shape.self_modulate = _shape_color.darkened(0.2)
+		await _play_sound()
 	else:
 		_icon.self_modulate = _icon_dark
 		_icon.texture = _icon_off
 		_shape.self_modulate = _shape_color.darkened(0.5)
 	
 	emit_signal(option_picked.get_name(),_option, toggled_on)
+
+
+func _play_sound():
+	_player.play(0)
+	_timer.start()
+
+
+func _stop_sound() -> void:
+	_player.stop()
+	_timer.stop()
 #endregion

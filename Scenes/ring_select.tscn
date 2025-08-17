@@ -1,14 +1,14 @@
 [gd_scene load_steps=14 format=3 uid="uid://buh4r87tyxn1t"]
 
 [ext_resource type="Script" uid="uid://dkr6427c6b73e" path="res://Scripts/ring_select.gd" id="1_mpriq"]
-[ext_resource type="AudioStream" uid="uid://csjk3un28bcnd" path="res://Audios/tone_e.ogg" id="2_2ok1q"]
+[ext_resource type="AudioStream" uid="uid://u775g3qinibv" path="res://Audios/tone_flute_e4.ogg" id="2_151yh"]
 [ext_resource type="PackedScene" uid="uid://cgdr7gnp3no3c" path="res://Scenes/button_options.tscn" id="2_xj0ph"]
-[ext_resource type="AudioStream" uid="uid://c0hjwkim4lo3s" path="res://Audios/tone_csharp.ogg" id="3_73amb"]
 [ext_resource type="PackedScene" uid="uid://bqcfrbbc1mao" path="res://Scenes/button_middle.tscn" id="3_nvd6g"]
-[ext_resource type="AudioStream" uid="uid://b1812ghal1nxm" path="res://Audios/tone_a.ogg" id="4_15mgn"]
+[ext_resource type="AudioStream" uid="uid://cvt4xugcwwl2y" path="res://Audios/tone_piano_c4.ogg" id="3_y0rep"]
 [ext_resource type="Script" uid="uid://dacyxok4b4kam" path="res://Scripts/label_group.gd" id="4_nvd6g"]
 [ext_resource type="Theme" uid="uid://yoehfgx3aqs4" path="res://Resources/main_theme.tres" id="4_xj0ph"]
-[ext_resource type="AudioStream" uid="uid://bdvv7ycmwhp0x" path="res://Audios/tone_elow.ogg" id="5_vk4km"]
+[ext_resource type="AudioStream" uid="uid://bhyrbyywurtk7" path="res://Audios/tone_violin_A3.ogg" id="4_xshsl"]
+[ext_resource type="AudioStream" uid="uid://dlwgk15dffxrr" path="res://Audios/tone_drum_e3.ogg" id="5_151yh"]
 [ext_resource type="Texture2D" uid="uid://grmn3voap4yx" path="res://Videos/shapes_circles.svg" id="7_151yh"]
 [ext_resource type="Texture2D" uid="uid://c7u6ei3tfys13" path="res://Videos/shapes_triangles.svg" id="8_y0rep"]
 [ext_resource type="Texture2D" uid="uid://ca642d2s1kbbh" path="res://Videos/shapes_squares.svg" id="9_wfiou"]
@@ -27,7 +27,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.8, 0.8)
 script = ExtResource("1_mpriq")
-_sounds = Array[AudioStreamOggVorbis]([ExtResource("2_2ok1q"), ExtResource("3_73amb"), ExtResource("4_15mgn"), ExtResource("5_vk4km"), null])
+_sounds = Array[AudioStreamOggVorbis]([ExtResource("2_151yh"), ExtResource("3_y0rep"), ExtResource("4_xshsl"), ExtResource("5_151yh"), null])
 
 [node name="Buttons" type="Control" parent="."]
 layout_mode = 1
@@ -321,6 +321,3 @@ vertical_alignment = 2
 autowrap_mode = 1
 metadata/on = "on"
 metadata/off = "off"
-
-[node name="Player" type="AudioStreamPlayer" parent="."]
-volume_db = -80.0
