@@ -13,8 +13,9 @@ config_version=5
 config/name="Omnis"
 run/main_scene="uid://bajflmusqmpyk"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-boot_splash/image="uid://dvnn37pr6bbg0"
-config/icon="uid://dt7ikqosp6hd0"
+boot_splash/bg_color=Color(0.0980392, 0.0980392, 0.0980392, 1)
+boot_splash/image="uid://b30blbqpjlkf1"
+config/icon="uid://l76o71kou43h"
 
 [autoload]
 

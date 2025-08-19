@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bajflmusqmpyk"]
 
-[ext_resource type="Texture2D" uid="uid://ds2kdeoocjwr4" path="res://Videos/omnis_back.png" id="1_0afbu"]
+[ext_resource type="Texture2D" uid="uid://ukb43xicsqfj" path="res://Videos/omnis_back.svg" id="1_bhbgu"]
 [ext_resource type="PackedScene" uid="uid://cvn3uge02x1vt" path="res://Scenes/select_start.tscn" id="2_wqnqk"]
 [ext_resource type="PackedScene" uid="uid://bhd7rqc0g58w" path="res://Scenes/option_modes.tscn" id="3_qv56o"]
 [ext_resource type="PackedScene" uid="uid://dgailf7aquvw3" path="res://Scenes/select_options.tscn" id="4_bhbgu"]
@@ -16,13 +16,14 @@ grow_vertical = 2
 size_flags_horizontal = 4
 
 [node name="Back" type="TextureRect" parent="."]
+self_modulate = Color(0.89, 0.89, 0.89, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_0afbu")
+texture = ExtResource("1_bhbgu")
 
 [node name="StartGroup" type="Control" parent="."]
 layout_mode = 1

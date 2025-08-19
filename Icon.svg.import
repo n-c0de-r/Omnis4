@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b30blbqpjlkf1"
-path="res://.godot/imported/omnis_splash.png-a0b040f76881c936bf2461abd227b73f.ctex"
+uid="uid://l76o71kou43h"
+path="res://.godot/imported/Icon.svg-209197100d5fe6cba9c168636c60b76c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Videos/omnis_splash.png"
-dest_files=["res://.godot/imported/omnis_splash.png-a0b040f76881c936bf2461abd227b73f.ctex"]
+source_file="res://Icon.svg"
+dest_files=["res://.godot/imported/Icon.svg-209197100d5fe6cba9c168636c60b76c.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false
