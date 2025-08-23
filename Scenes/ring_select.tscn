@@ -321,3 +321,6 @@ vertical_alignment = 2
 autowrap_mode = 1
 metadata/on = "on"
 metadata/off = "off"
+
+[node name="Listener" type="AudioListener2D" parent="."]
+current = true

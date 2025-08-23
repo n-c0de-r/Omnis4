@@ -20,7 +20,6 @@ _icon_off = ExtResource("2_qtwdh")
 _icon_off = ExtResource("3_y4b1x")
 
 [node name="Down" parent="Buttons" index="2"]
-disabled = true
 _icon_off = ExtResource("4_8p0j2")
 
 [node name="Left" parent="Buttons" index="3"]
@@ -36,7 +35,7 @@ text = "New Game"
 text = "Modes"
 
 [node name="Down" parent="Labels" index="2"]
-text = "Options"
+text = "Settings"
 
 [node name="Left" parent="Labels" index="3"]
 text = "Trials"

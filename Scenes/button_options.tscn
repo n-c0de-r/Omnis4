@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dfuv6b0dq6ueo" path="res://Videos/icon_option_off.svg" id="5_37xkv"]
 [ext_resource type="Texture2D" uid="uid://ckrlnwwlxdm5d" path="res://Videos/shapes_mask.svg" id="7_xp8id"]
 
-[node name="OmnisButton" type="TextureButton"]
+[node name="OmnisButton" type="TextureButton" node_paths=PackedStringArray("_sound")]
 clip_contents = true
 anchors_preset = 8
 anchor_left = 0.5
@@ -33,6 +33,7 @@ texture_disabled = ExtResource("3_q6358")
 texture_click_mask = ExtResource("3_xp8id")
 script = ExtResource("4_nwkax")
 _icon_off = ExtResource("5_37xkv")
+_sound = NodePath("Sound")
 metadata/on = "on"
 metadata/off = "off"
 
@@ -74,6 +75,9 @@ grow_vertical = 2
 pivot_offset = Vector2(50, 50)
 mouse_filter = 2
 texture = ExtResource("5_37xkv")
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(200, -100)
 
 [node name="Player" type="AudioStreamPlayer" parent="."]
 

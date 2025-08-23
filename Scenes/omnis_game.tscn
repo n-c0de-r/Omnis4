@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1irmmbnqwggj"]
+[gd_scene load_steps=8 format=3 uid="uid://d1irmmbnqwggj"]
 
 [ext_resource type="Script" uid="uid://dexpfg7vjhx6p" path="res://Scripts/omnis_game.gd" id="1_y0byd"]
 [ext_resource type="Texture2D" uid="uid://ukb43xicsqfj" path="res://Videos/omnis_back.svg" id="2_iu52v"]
 [ext_resource type="PackedScene" uid="uid://dkfosb8ask52l" path="res://Scenes/select_game.tscn" id="4_iu52v"]
 [ext_resource type="PackedScene" uid="uid://dm1j0p7dkxnyj" path="res://Scenes/select_pause.tscn" id="4_tqpa8"]
+[ext_resource type="PackedScene" uid="uid://cukcd3gepuwds" path="res://Scenes/option_settings.tscn" id="5_tqpa8"]
+[ext_resource type="Texture2D" uid="uid://c4kvic65x21co" path="res://Videos/icon_hud_heart.svg" id="6_uy2tj"]
+[ext_resource type="Texture2D" uid="uid://d4j5rs3k337y7" path="res://Videos/Icon_setting_unlimited.svg" id="7_f4pdj"]
 
-[node name="Game" type="Control" node_paths=PackedStringArray("_board", "_pause_menu", "_timer")]
+[node name="Game" type="Control" node_paths=PackedStringArray("_board", "_pause_menu", "_heart_container", "_timer")]
 process_mode = 1
 layout_mode = 3
 anchors_preset = 15
@@ -18,12 +21,12 @@ size_flags_vertical = 4
 script = ExtResource("1_y0byd")
 _board = NodePath("GameBoard")
 _pause_menu = NodePath("PauseMenu")
+_heart_container = NodePath("HeartContainer")
 _timer = NodePath("Timer")
 
 [node name="Background" type="TextureRect" parent="."]
 self_modulate = Color(0.89, 0.89, 0.89, 1)
-layout_mode = 1
-anchors_preset = 15
+layout_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -31,15 +34,52 @@ grow_vertical = 2
 texture = ExtResource("2_iu52v")
 
 [node name="GameBoard" parent="." instance=ExtResource("4_iu52v")]
-layout_mode = 1
+layout_mode = 2
+anchors_preset = 0
 
-[node name="PauseMenu" parent="." instance=ExtResource("4_tqpa8")]
+[node name="PauseMenu" parent="." node_paths=PackedStringArray("_options") instance=ExtResource("4_tqpa8")]
 visible = false
-layout_mode = 1
+layout_mode = 2
+anchors_preset = 0
+_options = [NodePath("../Settings")]
+
+[node name="Settings" parent="." instance=ExtResource("5_tqpa8")]
+process_mode = 2
+visible = false
+layout_mode = 2
+anchors_preset = 0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="HeartContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 100.0
+offset_top = 50.0
+offset_right = 324.0
+offset_bottom = 122.0
+
+[node name="Heart1" type="TextureRect" parent="HeartContainer"]
+self_modulate = Color(0.86, 0.3096, 0.3096, 1)
+layout_mode = 2
+texture = ExtResource("6_uy2tj")
+
+[node name="Heart2" type="TextureRect" parent="HeartContainer"]
+self_modulate = Color(0.86, 0.3096, 0.3096, 1)
+layout_mode = 2
+texture = ExtResource("6_uy2tj")
+
+[node name="Heart3" type="TextureRect" parent="HeartContainer"]
+self_modulate = Color(0.86, 0.3096, 0.3096, 1)
+layout_mode = 2
+texture = ExtResource("6_uy2tj")
+
+[node name="Endless" type="TextureRect" parent="HeartContainer"]
+visible = false
+self_modulate = Color(0.86, 0.3096, 0.3096, 1)
+layout_mode = 2
+texture = ExtResource("7_f4pdj")
 
 [connection signal="decision_made" from="GameBoard" to="." method="evaluate_decision"]
 [connection signal="game_paused" from="GameBoard" to="." method="_on_game_paused"]

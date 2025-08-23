@@ -15,6 +15,7 @@ enum Colors { BLUE, RED, YELLOW, GREEN, PURPLE }
 const BASE_DARKNESS: float = 0.2
 const BASE_SPEED: float = 1
 var settings: Dictionary[String, bool]
+var previous_menus: Array[RingSelect]
 #endregion Values
 
 
@@ -30,7 +31,7 @@ func get_option(value: String) -> bool:
 	return false
 
 func get_speed() -> float:
-	if get_option("slower"):
+	if get_option("speed"):
 		return BASE_SPEED * 2
 	return BASE_SPEED
 

@@ -6,7 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://pxphf5m5mkl5" path="res://Videos/icon_mode_rotate.svg" id="5_odf0s"]
 [ext_resource type="Texture2D" uid="uid://1xtbhdbdbou1" path="res://Videos/icon_mode_random.svg" id="6_ifmq7"]
 
-[node name="Modes" instance=ExtResource("1_6s5ph")]
+[node name="Modes" node_paths=PackedStringArray("_options") instance=ExtResource("1_6s5ph")]
+_options = []
 
 [node name="Up" parent="Buttons" index="0"]
 _icon_on = ExtResource("3_f13h1")

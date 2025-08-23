@@ -1,9 +1,21 @@
+#region Header
 extends Control
 class_name OmnisGame
+#region
+
+
+#region Signals
+#endregion
+
+
+#region Enums
+#endregion
+
 
 #region Exports
 @export var _board: SelectGame
 @export var _pause_menu: RingSelect
+@export var _heart_container: HBoxContainer
 @export var _timer: Timer
 #endregion Exports
 
@@ -13,6 +25,8 @@ var _show_list: Array[int]
 var _guess_list: Array[int]
 
 const BASE_TIMEOUT: float = 3.0
+const HEARTS_MAX: int = 3
+var _lives: int = HEARTS_MAX
 var _wait_time: float
 var _rounds_played: int
 var _check_start: int
@@ -21,6 +35,7 @@ var _check_direction: int # 1=normal, -1=reverse
 var _mirror_shift: int # 0=normal, 2=mirrors color
 var _color_mod: int # for bitwise modulo
 
+var _is_limited: bool = false
 var _is_flipped: bool = false
 var _is_chaos: bool = false
 var _is_timed: bool = false
@@ -41,9 +56,17 @@ func evaluate_decision(selection: int = -1) -> void:
 	_timer.stop()
 	if (_guess_list[_check_index] == selection):
 		_check_index += _check_direction
+		# show feedback
 	else:
-		#lose life
-		_restart_round()
+		if _is_limited:
+			_lives -= 1
+			_update_hud()
+		# show feedback
+		if _lives == 0:
+			var res: Resource = load("res://Scenes/omnis_title.tscn")
+			get_tree().change_scene_to_packed(res)
+		else:
+			_restart_round()
 	
 	var _guess_items: int = _guess_list.size()
 	if (_check_index >= _guess_items or _check_index < -_guess_items):
@@ -54,7 +77,8 @@ func evaluate_decision(selection: int = -1) -> void:
 #region Private Funtions
 ## Sets the initial values for the game,
 ## according to the Global settings
-func _init_values():
+func _init_values() -> void:
+	Globals.previous_menus.clear()
 	_show_list.clear()
 	_guess_list.clear()
 	
@@ -64,7 +88,8 @@ func _init_values():
 	_color_mod = _button_list.size()-1
 	_check_direction = 1
 	_mirror_shift = 2 if Globals.get_option("mirror") else 0
-	_wait_time = BASE_TIMEOUT * Globals.get_speed()
+	
+	_reset_values()
 	
 	_is_flipped = Globals.get_option("flip")
 	_is_chaos = Globals.get_option("chaos")
@@ -76,7 +101,11 @@ func _init_values():
 		_flip_direction()
 
 
-func _generate_rounds(count: int = 1):
+func _reset_values() -> void:
+	_wait_time = BASE_TIMEOUT * Globals.get_speed()
+	_update_hud()
+
+func _generate_rounds(count: int = 1) -> void:
 	for r in count:
 		randomize()
 		var next: int
@@ -93,9 +122,22 @@ func _generate_rounds(count: int = 1):
 			_guess_list.append(next)
 	
 	print("show ", _show_list)
-	print("guess ", _guess_list)
-	print("dir ", _check_direction)
+	print("guess ", _guess_list, ", dir ", _check_direction)
 	_restart_round()
+
+
+func _update_hud() -> void:
+	_is_limited = not Globals.get_option("tries")
+	_heart_container.get_child(HEARTS_MAX).visible = not _is_limited
+	
+	for index in HEARTS_MAX:
+		var heart: TextureRect = _heart_container.get_child(index)
+		heart.visible = false
+	
+	if _is_limited:
+		for index in _lives:
+			var heart: TextureRect = _heart_container.get_child(index)
+			heart.visible = true
 
 
 func _finish_round() -> void:
@@ -145,6 +187,7 @@ func _on_restart_game() -> void:
 
 
 func _on_resume_game() -> void:
+	_reset_values()
 	get_tree().paused = false
 	_board.visible = true
 	_pause_menu.visible = false

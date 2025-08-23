@@ -19,16 +19,19 @@ signal option_picked(option: int, state: bool)
 @export var _icon_on: CompressedTexture2D
 @export_color_no_alpha var _icon_color: Color
 @export var _shape_texture: CompressedTexture2D
+@export var _sound: AudioStreamPlayer2D
 #endregion
 
 
 #region Values
 @onready var _icon: TextureRect = $Icon
 @onready var _shape: TextureRect = $Mask/Shape
-@onready var _player: AudioStreamPlayer = $Player
+#@onready var _player: AudioStreamPlayer = $Player
 @onready var _timer: Timer = $Timer
+var _input_strings: Array[String] = ["dummy", "OmnisUp", "OmnisRight", "OmnisDown", "OmnisLeft"]
 var _icon_dark: Color
 var _shape_color: Color
+var _pressed_once: bool = false
 #endregion
 
 
@@ -41,12 +44,21 @@ func _ready() -> void:
 	_shape_color = self_modulate
 	_shape.self_modulate = self_modulate
 	_timer.wait_time = Globals.get_speed()
+
+
+func _input(event: InputEvent) -> void:
+	#if Input.is_action_just_released(_input_strings[_option]):
+		#print(_option)
+		#print("press ", _input_strings[_option])
+		#print(event)
+		#_on_pressed()
+	pass
 #endregion
 
 
 #region Public Functions
 func set_sound(sound: AudioStreamOggVorbis):
-	_player.stream = sound
+	_sound.stream = sound
 
 
 func switch_state(state: bool) -> void:
@@ -86,6 +98,11 @@ func _on_pressed() -> void:
 
 
 func _on_toggled(toggled_on: bool) -> void:
+	#if Globals.get_option("speech"):
+		#if not _pressed_once:
+			#_pressed_once = true
+			#return
+	
 	if toggled_on:
 		_icon.self_modulate = _icon_color
 		_icon.texture = _icon_on
@@ -95,16 +112,17 @@ func _on_toggled(toggled_on: bool) -> void:
 		_icon.self_modulate = _icon_dark
 		_icon.texture = _icon_off
 		_shape.self_modulate = _shape_color.darkened(0.5)
+	#_pressed_once = false
 	
 	emit_signal(option_picked.get_name(),_option, toggled_on)
 
 
 func _play_sound():
-	_player.play(0)
+	_sound.play(0)
 	_timer.start()
 
 
 func _stop_sound() -> void:
-	_player.stop()
+	_sound.stop()
 	_timer.stop()
 #endregion

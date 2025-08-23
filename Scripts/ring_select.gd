@@ -41,15 +41,15 @@ func _ready() -> void:
 func _on_option_picked(option: int, _state: bool):
 	match(option):
 		Globals.Colors.PURPLE:
-			_switch_menu(self, previous_menu)
+			_switch_menu(self, Globals.previous_menus.pop_back())
 		_:
-			Globals.switch_menu(self, _options[option])
+			Globals.previous_menus.push_back(self)
+			_switch_menu(self, _options[option])
 
 
 func _switch_menu(current: Control, next: Control):
 	current.visible = false
 	next.visible = true
-	next.previous_menu = current
 
 
 ## Connects a selected board's child buttons to it's current parent object

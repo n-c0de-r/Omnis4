@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://cukcd3gepuwds"]
+
+[ext_resource type="PackedScene" uid="uid://q8f6kuee3typ" path="res://Scenes/ring_option.tscn" id="1_vk274"]
+[ext_resource type="Texture2D" uid="uid://c1lktko62on6b" path="res://Videos/icon_setting_slower.svg" id="2_w6j5j"]
+[ext_resource type="Texture2D" uid="uid://d4j5rs3k337y7" path="res://Videos/Icon_setting_unlimited.svg" id="3_g0bfy"]
+[ext_resource type="Texture2D" uid="uid://b7dmld76uh6e0" path="res://Videos/icon_setting_info.svg" id="3_k7dcr"]
+[ext_resource type="Texture2D" uid="uid://dyfltcloo4uwd" path="res://Videos/Icon_setting_read.svg" id="4_k7dcr"]
+
+[node name="Settings" instance=ExtResource("1_vk274")]
+
+[node name="Up" parent="Buttons" index="0"]
+_icon_on = ExtResource("2_w6j5j")
+
+[node name="Right" parent="Buttons" index="1"]
+_icon_on = ExtResource("3_k7dcr")
+
+[node name="Down" parent="Buttons" index="2"]
+_icon_on = ExtResource("3_g0bfy")
+
+[node name="Left" parent="Buttons" index="3"]
+_icon_on = ExtResource("4_k7dcr")
+
+[node name="Up" parent="Labels" index="0"]
+text = "Speed"
+
+[node name="switch" parent="Labels/Up" index="0"]
+text = "normal"
+metadata/on = "slower"
+metadata/off = "normal"
+
+[node name="Right" parent="Labels" index="1"]
+text = "Infos"
+
+[node name="switch" parent="Labels/Right" index="0"]
+text = "simple"
+metadata/on = "additional"
+metadata/off = "simple"
+
+[node name="Down" parent="Labels" index="2"]
+text = "Tries"
+
+[node name="switch" parent="Labels/Down" index="0"]
+text = "3x"
+metadata/on = "unlimited"
+metadata/off = "3x"
+
+[node name="Left" parent="Labels" index="3"]
+text = "Speech"
+
+[node name="switch" parent="Labels/Left" index="0"]
+text = "off"

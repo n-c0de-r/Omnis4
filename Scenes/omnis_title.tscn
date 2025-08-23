@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://ukb43xicsqfj" path="res://Videos/omnis_back.svg" id="1_bhbgu"]
 [ext_resource type="PackedScene" uid="uid://cvn3uge02x1vt" path="res://Scenes/select_start.tscn" id="2_wqnqk"]
 [ext_resource type="PackedScene" uid="uid://bhd7rqc0g58w" path="res://Scenes/option_modes.tscn" id="3_qv56o"]
-[ext_resource type="PackedScene" uid="uid://dgailf7aquvw3" path="res://Scenes/select_options.tscn" id="4_bhbgu"]
+[ext_resource type="PackedScene" uid="uid://cukcd3gepuwds" path="res://Scenes/option_settings.tscn" id="4_bhbgu"]
 [ext_resource type="PackedScene" uid="uid://pitsn0qdyc6a" path="res://Scenes/option_trials.tscn" id="5_0afbu"]
 
 [node name="Title" type="Control"]
@@ -37,16 +37,17 @@ grow_vertical = 2
 
 [node name="Start" parent="StartGroup" node_paths=PackedStringArray("_options") instance=ExtResource("2_wqnqk")]
 layout_mode = 1
-_options = [null, NodePath("../Modes"), NodePath("../Options"), NodePath("../Trials")]
+_options = [null, NodePath("../Modes"), NodePath("../Settings"), NodePath("../Trials")]
 
 [node name="Modes" parent="StartGroup" instance=ExtResource("3_qv56o")]
 visible = false
 layout_mode = 1
 
-[node name="Options" parent="StartGroup" instance=ExtResource("4_bhbgu")]
+[node name="Settings" parent="StartGroup" instance=ExtResource("4_bhbgu")]
 visible = false
 layout_mode = 1
 
-[node name="Trials" parent="StartGroup" instance=ExtResource("5_0afbu")]
+[node name="Trials" parent="StartGroup" node_paths=PackedStringArray("_options") instance=ExtResource("5_0afbu")]
 visible = false
 layout_mode = 1
+_options = [null, null, null, null]

@@ -42,7 +42,8 @@ func _on_option_picked(option: int, _state: bool):
 			var res: Resource = load("res://Scenes/omnis_title.tscn")
 			get_tree().change_scene_to_packed(res)
 		Globals.Colors.YELLOW:
-			print("options")
+			Globals.previous_menus.push_back(self)
+			_switch_menu(self, _options[0])
 		Globals.Colors.GREEN:
 			emit_signal(resume_game.get_name())
 #endregion
